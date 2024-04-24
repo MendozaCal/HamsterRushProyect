@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Heal : MonoBehaviour
 {
-    public int Health = 21;
-    public int DamageFloor = 20;
-    public int HealthRecuperation = 25;
+    public float Health = 21f;
+    public float DamageFloor = 20f;
+    public float HealthRecuperation = 25f;
 
     private void Update()
     {
-        Health = Mathf.Min(Health, 100);//Limitar a Health a un m·ximo de 100
+        Health = Mathf.Min(Health, 100);//Limitar a Health a un m√°ximo de 100
 
     }
     private void OnCollisionEnter(Collision collision)
@@ -24,11 +25,18 @@ public class Heal : MonoBehaviour
             }
         }
     }
-    private void OnTriggerStay(Collider collider)
+    /*private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.CompareTag("Pits"))
         {
             Health += HealthRecuperation;
+        }
+    }*/
+    private void OnTriggerStay(Collider collider)
+    {
+        if (collider.gameObject.CompareTag("Pits"))
+        {
+            Health += HealthRecuperation * Time.deltaTime;
         }
     }
 }
