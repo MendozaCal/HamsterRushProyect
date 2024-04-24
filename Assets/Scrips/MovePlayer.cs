@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MovePlayer : MonoBehaviour
 {
-    public float maxSpeed = 15.0f;
-    public float accelerationTime = 10.0f;
+    public float maxSpeed = 15f;
+    public float accelerationTime = 10f;
 
-    private float currentSpeed = 0.0f;
+    private float currentSpeed = 0f;
     private float acceleration;
 
     public float rotationSpeed;

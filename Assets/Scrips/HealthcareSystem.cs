@@ -8,35 +8,36 @@ public class Heal : MonoBehaviour
     public float Health = 21f;
     public float DamageFloor = 20f;
     public float HealthRecuperation = 25f;
+    public GameObject[] Spawners;
+    public Transform Spawn;
 
     private void Update()
     {
         Health = Mathf.Min(Health, 100);//Limitar a Health a un máximo de 100
-
+        if (Health <= 0)
+        {
+            gameObject.SetActive(false);
+            RespawnDelay(3);
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Suelo"))
         {
             Health -= DamageFloor;
-            if (Health == 0)
-            {
-                Destroy(gameObject);
-            }
+            
         }
     }
-    /*private void OnTriggerEnter(Collider collider)
+    IEnumerator RespawnDelay(float delay)
     {
-        if (collider.gameObject.CompareTag("Pits"))
-        {
-            Health += HealthRecuperation;
-        }
-    }*/
+        yield return new WaitForSeconds(delay);
+        gameObject.SetActive(true);
+    }
     private void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.CompareTag("Pits"))
         {
             Health += HealthRecuperation * Time.deltaTime;
-        }
+        }   
     }
 }
