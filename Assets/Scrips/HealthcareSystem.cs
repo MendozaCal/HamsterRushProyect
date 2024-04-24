@@ -24,31 +24,11 @@ public class Heal : MonoBehaviour
             }
         }
     }
-    
     private void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.CompareTag("Pits"))
         {
-            bool isRecovering = false;
-            //float recoveryDuration = 5.0f;
-            float recoveryTimer = 0f;
-            recoveryTimer += Time.deltaTime;
-            if (isRecovering)
-            {
-                recoveryTimer += Time.deltaTime;
-
-                if (recoveryTimer >= 5)
-                {
-                    isRecovering = false;
-                    recoveryTimer = 0.0f;
-                }
-                else
-                {
-                    Health += HealthRecuperation;
-                    // Asegurar que la salud no supere el máximo
-                    Health = Mathf.Min(Health, 100);
-                }
-            }
+            Health += HealthRecuperation;
         }
     }
 }
