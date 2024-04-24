@@ -11,9 +11,8 @@ public class MovePlayer : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        float upDownInput = 0.0f;
 
-        Vector3 movement = new Vector3(horizontalInput, upDownInput, verticalInput) * speed * Time.deltaTime;
+        Vector3 movement = new Vector3(horizontalInput, 0, verticalInput) * speed * Time.deltaTime;
         Vector3 rotation = new Vector3(0.0f, horizontalInput, 0.0f) * rotationSpeed * Time.deltaTime;
 
         transform.Translate(movement, Space.Self);
