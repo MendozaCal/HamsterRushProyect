@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovePlayer : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    public float maxSpeed = 15f;
-    public float accelerationTime = 10f;
-
-    private float currentSpeed = 0f;
+    public float maxSpeed = 15;
+    public float accelerationTime = 10;
+    public float rotationSpeed = 45; 
+    private float currentSpeed = 0;
     private float acceleration;
-
-    public float rotationSpeed;
 
     void Start()
     {
@@ -33,9 +31,5 @@ public class MovePlayer : MonoBehaviour
 
         transform.Translate(movement, Space.Self); //Encargado de movimiento //Space.Self = para q se quede mirando a donde giraste
         transform.Rotate(rotation.normalized);
-    }
-    public void Nitro()
-    {
-
     }
 }

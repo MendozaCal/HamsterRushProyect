@@ -3,35 +3,31 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Heal : MonoBehaviour
+public class HealthcareSystem : MonoBehaviour
 {
     public float Health = 21f;
     public float DamageFloor = 20f;
     public float HealthRecuperation = 25f;
-    public GameObject[] Spawners;
-    public Transform Spawn;
-
+    public SpawnSystem spawnSystem;
     private void Update()
     {
         Health = Mathf.Min(Health, 100);//Limitar a Health a un máximo de 100
-        if (Health <= 0)
-        {
-            gameObject.SetActive(false);
-            RespawnDelay(3);
-        }
+        
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Suelo"))
         {
             Health -= DamageFloor;
-            
+            if(Health <= 0)
+            {
+                spawnSystem.DeadPlayer();
+                if(spawnSystem.isRes == true)
+                {
+                    Health += 100;
+                }
+            }
         }
-    }
-    IEnumerator RespawnDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        gameObject.SetActive(true);
     }
     private void OnTriggerStay(Collider collider)
     {
