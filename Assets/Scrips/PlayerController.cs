@@ -5,19 +5,38 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float maxSpeed = 15;
+    float speed;
     public float accelerationTime = 10;
-    public float rotationSpeed = 45; 
+    public float rotationSpeed = 45;
     private float currentSpeed = 0;
     private float acceleration;
+    
+    //impulso rampa
+    public float TimerImpulso = 0;
+    public float MaxTimeImpulso = 2;
+    public float impulso = 10;
+    public bool impulsoVerification = false;
 
     void Start()
     {
         acceleration = maxSpeed / accelerationTime;
+        speed = maxSpeed;
     }
 
     void Update()
     {
         MoveHamster();
+        if(impulsoVerification == true)
+        {
+            TimerImpulso += Time.deltaTime;
+            if (TimerImpulso >= MaxTimeImpulso)
+            {
+                maxSpeed = speed;
+                impulsoVerification = false;
+                TimerImpulso = 0;
+            }
+        }
+        
     }
     public void MoveHamster()
     {
@@ -31,5 +50,13 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(movement, Space.Self); //Encargado de movimiento //Space.Self = para q se quede mirando a donde giraste
         transform.Rotate(rotation.normalized);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Impulso"))
+        {
+            maxSpeed *= impulso;
+            impulsoVerification = true;
+        }
     }
 }

@@ -7,6 +7,7 @@ TagManager:
   - Suelo
   - Pits
   - New Respawn
+  - Impulso
   layers:
   - Default
   - TransparentFX
