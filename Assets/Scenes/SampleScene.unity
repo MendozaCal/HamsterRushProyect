@@ -269,6 +269,7 @@ MonoBehaviour:
   Health: 21
   DamageFloor: 20
   HealthRecuperation: 25
+  playerController: {fileID: 70796621}
   spawnSystem: {fileID: 70796623}
 --- !u!114 &70796623
 MonoBehaviour:
@@ -284,7 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posRespawn: {fileID: 1768957982}
   posPlayer: {fileID: 70796615}
-  isRes: 0
+  psNewRespawn: {x: 0, y: 0, z: 0}
 --- !u!1 &102074505
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +482,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322139261}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15708233, y: -0.000071529845, z: 0.000011377318, w: 0.98758554}
+  m_LocalRotation: {x: 0.15708233, y: -0.00007149586, z: 0.000011371912, w: 0.98758554}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -939,7 +940,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819164177}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12110466, y: -0.00007185973, z: 0.000008767077, w: 0.9926398}
+  m_LocalRotation: {x: 0.12110466, y: -0.00007189792, z: 0.000008771736, w: 0.9926398}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1854,7 +1855,7 @@ GameObject:
   - component: {fileID: 1768957983}
   m_Layer: 0
   m_Name: Spawn
-  m_TagString: Untagged
+  m_TagString: New Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
