@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //Move
+    [Header("-----Move-----")]
     public float maxSpeed = 15;
-    float speed;
     public float accelerationTime = 10;
     public float rotationSpeed = 45;
-    private float currentSpeed = 0;
-    private float acceleration;
-    //Nitro
+    float speed;
+    float currentSpeed = 0;
+    float acceleration;
+
+    [Header("-----Nitro-----")]
     public float maxNitro = 100;
-    public float TimerNitro = 0;
-    public float maxTimeNitro = 5;
     public float nitroPower = 10;
     public float nitroItem = 25;
-    public bool nitroItemVerification = false;
+    bool nitroItemVerification = false;
     
-    //impulso rampa
-    public float TimerImpulso = 0;
+    [Header("-----Impulso Rampa-----")]
     public float MaxTimeImpulso = 2;
     public float impulso = 10;
-    public bool impulsoVerification = false;
+    float TimerImpulso = 0;
+    bool impulsoVerification = false;
 
     void Start()
     {
@@ -33,11 +32,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        maxSpeed = Mathf.Min(maxSpeed, 500);
+        maxSpeed = Mathf.Min(maxSpeed, 50);
         maxNitro = Mathf.Min(maxNitro, 100);
         maxNitro = Mathf.Max(maxNitro, 0);
         MoveHamster();
-        BustRampa();
         Nitro();
     }
     public void MoveHamster()
@@ -55,10 +53,14 @@ public class PlayerController : MonoBehaviour
     }
     public void Nitro()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && maxNitro >= 0)
+        if (Input.GetKey(KeyCode.LeftShift) && maxNitro > 0)
         {
             maxNitro -= Time.deltaTime * 10;
-            maxSpeed *= nitroPower;
+            maxSpeed += nitroPower;
+        }
+        else if(impulsoVerification == true)
+        {
+            BustRampa();
         }
         else
         {
@@ -72,16 +74,14 @@ public class PlayerController : MonoBehaviour
     }
     public void BustRampa()
     {
-        if (impulsoVerification == true)
+        maxSpeed = speed;
+        maxSpeed += 15;
+        TimerImpulso += Time.deltaTime;
+        if (TimerImpulso >= MaxTimeImpulso)
         {
-            maxSpeed *= 10;
-            TimerImpulso += Time.deltaTime;
-            if (TimerImpulso >= MaxTimeImpulso)
-            {
-                maxSpeed = speed;
-                impulsoVerification = false;
-                TimerImpulso = 0;
-            }
+            maxSpeed = speed;
+            impulsoVerification = false;
+            TimerImpulso = 0;
         }
     }
     private void OnTriggerEnter(Collider other)
