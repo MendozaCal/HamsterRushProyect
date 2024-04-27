@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public float TimerNitro = 0;
     public float maxTimeNitro = 5;
     public float nitroPower = 10;
+    public float nitroItem = 25;
+    public bool nitroItemVerification = false;
     
     //impulso rampa
     public float TimerImpulso = 0;
@@ -25,15 +27,15 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        maxSpeed = Mathf.Min(maxSpeed, 500);
-        maxNitro = Mathf.Min(maxNitro, 100);
-        maxNitro = Mathf.Max(maxNitro, 0);
         acceleration = maxSpeed / accelerationTime;
         speed = maxSpeed;
     }
 
     void FixedUpdate()
     {
+        maxSpeed = Mathf.Min(maxSpeed, 500);
+        maxNitro = Mathf.Min(maxNitro, 100);
+        maxNitro = Mathf.Max(maxNitro, 0);
         MoveHamster();
         BustRampa();
         Nitro();
@@ -62,11 +64,17 @@ public class PlayerController : MonoBehaviour
         {
             maxSpeed = speed;
         }
+        if(nitroItemVerification == true)
+        {
+            maxNitro += nitroItem;
+            nitroItemVerification = false;
+        }
     }
     public void BustRampa()
     {
         if (impulsoVerification == true)
         {
+            maxSpeed *= 10;
             TimerImpulso += Time.deltaTime;
             if (TimerImpulso >= MaxTimeImpulso)
             {
@@ -80,8 +88,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Impulso"))
         {
-            maxSpeed *= impulso;
             impulsoVerification = true;
+        }
+        if (other.gameObject.CompareTag("Nitro"))
+        {
+            nitroItemVerification = true;
         }
     }
 }

@@ -34,4 +34,13 @@ public class NPCroute : MonoBehaviour
 
         transform.LookAt(waypoints[currentWaypoint]);
     }
+    /*void NitroNPC()
+    {
+        float RandomValor = Random.RandomRange(0,10);
+        if(RandomValor >= 6 && RandomValor <= 8)
+        {
+
+        }
+    }*/
+
 }

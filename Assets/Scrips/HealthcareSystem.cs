@@ -19,7 +19,6 @@ public class HealthcareSystem : MonoBehaviour
             spawnSystem.DeadPlayer();
         }
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Suelo"))
