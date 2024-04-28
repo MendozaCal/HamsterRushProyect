@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float nitroPower = 10;
     public float nitroItem = 25;
     bool nitroItemVerification = false;
+    public Slider NitroSlider;
     
     [Header("-----Impulso Rampa-----")]
     public float MaxTimeImpulso = 2;
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         acceleration = maxSpeed / accelerationTime;
         speed = maxSpeed;
+        NitroSlider.maxValue = maxNitro;
     }
 
     void FixedUpdate()
@@ -57,6 +60,7 @@ public class PlayerController : MonoBehaviour
         {
             maxNitro -= Time.deltaTime * 10;
             maxSpeed += nitroPower;
+            NitroSlider.value = maxNitro;
         }
         else if(impulsoVerification == true)
         {
@@ -69,6 +73,7 @@ public class PlayerController : MonoBehaviour
         if(nitroItemVerification == true)
         {
             maxNitro += nitroItem;
+            NitroSlider.value = maxNitro;
             nitroItemVerification = false;
         }
     }
