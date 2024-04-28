@@ -32,6 +32,14 @@ public class HealthcareSystem : MonoBehaviour
             HealthSlider.value = Health;
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Abismo"))
+        {
+            Health = 0;
+            HealthSlider.value = Health;
+        }
+    }
     private void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.CompareTag("Pits"))
