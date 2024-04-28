@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthcareSystem : MonoBehaviour
 {
-    public float Health = 21f;
-    public float DamageFloor = 20f;
-    public float HealthRecuperation = 25f;
-    //public PlayerController playerController;
+    public float Health = 100;
+    public float DamageFloor = 20;
+    public float HealthRecuperation = 25;
     public SpawnSystem spawnSystem;
+    public Slider HealthSlider;
+    private void Start()
+    {
+        HealthSlider.maxValue = Health;
+    }
     private void Update()
     {
         Health = Mathf.Min(Health, 100); // Limitar a Health a un máximo de 100
@@ -24,6 +29,7 @@ public class HealthcareSystem : MonoBehaviour
         if (collision.gameObject.CompareTag("Suelo"))
         {
             Health -= DamageFloor;
+            HealthSlider.value = Health;
         }
     }
     private void OnTriggerStay(Collider collider)
@@ -31,6 +37,7 @@ public class HealthcareSystem : MonoBehaviour
         if (collider.gameObject.CompareTag("Pits"))
         {
             Health += HealthRecuperation * Time.deltaTime;
+            HealthSlider.value = Health;
         }
     }
 }
