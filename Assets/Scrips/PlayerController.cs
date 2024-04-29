@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float accelerationTime = 10;
     public float rotationSpeed = 45;
     float speed;
-    float currentSpeed = 0;
+    public float currentSpeed = 0;
     float acceleration;
 
     [Header("-----Nitro-----")]
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
     public void BustRampa()
     {
         maxSpeed = speed;
-        maxSpeed += 15;
+        maxSpeed += impulso;
         TimerImpulso += Time.deltaTime;
         if (TimerImpulso >= MaxTimeImpulso)
         {
