@@ -5,17 +5,21 @@ using UnityEngine;
 public class NPCroute : MonoBehaviour
 {
     public Transform[] waypoints; 
-    public float speed = 5;
+    public float speed = 15;
     private int currentWaypoint = 0;
-
-    void Update()
+    Rigidbody rb;
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+    void FixedUpdate()
     {
         calculateDistance();
         MoveToWaypoint();
     }
     void calculateDistance()
     {
-        if (Vector3.Distance(transform.position, waypoints[currentWaypoint].position) < 0.5f)
+        if (Vector3.Distance(transform.position, waypoints[currentWaypoint].position) < 1)
         {
             currentWaypoint++;
 
@@ -29,9 +33,8 @@ public class NPCroute : MonoBehaviour
     {
         Vector3 direction = waypoints[currentWaypoint].position - transform.position;
         direction.Normalize();
-
-        transform.position += direction * speed * Time.deltaTime;
-
+        Vector3 velocity = direction * speed;
+        rb.velocity = velocity;
         transform.LookAt(waypoints[currentWaypoint]);
     }
     /*void NitroNPC()
@@ -39,8 +42,7 @@ public class NPCroute : MonoBehaviour
         float RandomValor = Random.RandomRange(0,10);
         if(RandomValor >= 6 && RandomValor <= 8)
         {
-
+            
         }
     }*/
-
 }
