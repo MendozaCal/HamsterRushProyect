@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 45;
     float speed;
     public float currentSpeed = 0;
-    float acceleration;
+    //float acceleration;
+    Rigidbody rb;
 
     [Header("-----Nitro-----")]
     public float maxNitro = 100;
@@ -28,14 +29,15 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        acceleration = maxSpeed / accelerationTime;
+        rb = GetComponent<Rigidbody>();
+        //acceleration = maxSpeed / accelerationTime;
         speed = maxSpeed;
         NitroSlider.maxValue = maxNitro;
     }
 
     void FixedUpdate()
     {
-        maxSpeed = Mathf.Min(maxSpeed, 50);
+        maxSpeed = Mathf.Min(maxSpeed, 20);
         maxNitro = Mathf.Min(maxNitro, 100);
         maxNitro = Mathf.Max(maxNitro, 0);
         MoveHamster();
@@ -46,13 +48,11 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        currentSpeed = Mathf.Clamp(currentSpeed + acceleration * Time.deltaTime, 0, maxSpeed); //Aceleración Progresiba de 0 a maxSpeed // Clamp = parametros
+        Vector3 movement = new Vector3(horizontalInput, 0, verticalInput) * maxSpeed * Time.deltaTime;
+        Quaternion rotation = Quaternion.Euler(0, horizontalInput * rotationSpeed * Time.deltaTime, 0);
 
-        Vector3 movement = new Vector3(horizontalInput, 0, verticalInput) * currentSpeed * Time.deltaTime;
-        Vector3 rotation = new Vector3(0, horizontalInput, 0) * rotationSpeed * Time.deltaTime;
-
-        transform.Translate(movement, Space.Self); //Encargado de movimiento //Space.Self = para q se quede mirando a donde giraste
-        transform.Rotate(rotation.normalized);
+        rb.MovePosition(transform.position + transform.TransformDirection(movement));
+        rb.MoveRotation(rb.rotation * rotation);
     }
     public void Nitro()
     {
