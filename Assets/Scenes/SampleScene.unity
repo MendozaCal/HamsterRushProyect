@@ -1205,7 +1205,14 @@ MonoBehaviour:
   - {fileID: 322892636}
   - {fileID: 1522240900}
   - {fileID: 1932150981}
-  speed: 1
+  speed: 15
+  InicialSpeed: 0
+  maxNitro: 100
+  nitroPower: 10
+  nitroItem: 25
+  RandomValor: 0
+  MaxTimeImpulso: 2
+  impulso: 10
 --- !u!135 &553793346
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -15,15 +15,14 @@ public class PlayerController : MonoBehaviour
 
     [Header("-----Nitro-----")]
     public float maxNitro = 100;
-    public float nitroPower = 10;
+    public float nitroPower = 15;
     public float nitroItem = 25;
     bool nitroItemVerification = false;
     public Slider NitroSlider;
-    //public GameObject NitroItem;
     
     [Header("-----Impulso Rampa-----")]
     public float MaxTimeImpulso = 2;
-    public float impulso = 10;
+    public float impulso = 15;
     float TimerImpulso = 0;
     bool impulsoVerification = false;
 
@@ -36,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        maxSpeed = Mathf.Min(maxSpeed, 20);
+        maxSpeed = Mathf.Min(maxSpeed, speed);
         maxNitro = Mathf.Min(maxNitro, 100);
         maxNitro = Mathf.Max(maxNitro, 0);
         MoveHamster();
@@ -49,7 +48,6 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(horizontalInput, 0, verticalInput) * maxSpeed * Time.deltaTime;
         Quaternion rotation = Quaternion.Euler(0, horizontalInput * rotationSpeed * Time.deltaTime, 0);
-
         rb.MovePosition(transform.position + transform.TransformDirection(movement));
         rb.MoveRotation(rb.rotation * rotation);
     }
@@ -69,6 +67,7 @@ public class PlayerController : MonoBehaviour
         {
             maxSpeed = speed;
         }
+
         if(nitroItemVerification == true)
         {
             maxNitro += nitroItem;
