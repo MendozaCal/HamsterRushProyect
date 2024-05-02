@@ -11,6 +11,7 @@ public class HealthcareSystem : MonoBehaviour
     public float HealthRecuperation = 25;
     public SpawnSystem spawnSystem;
     public Slider HealthSlider;
+    public PlayerController playerController;
     private void Start()
     {
         HealthSlider.maxValue = Health;
@@ -31,13 +32,19 @@ public class HealthcareSystem : MonoBehaviour
             Health -= DamageFloor;
             HealthSlider.value = Health;
         }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Abismo"))
+        if (collision.gameObject.CompareTag("Abismo"))
         {
             Health = 0;
             HealthSlider.value = Health;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Impulso"))
+        {
+            playerController.impulsoVerification = true;
+            HealthSlider.value = Health;
+            StartCoroutine(Cont());
         }
     }
     private void OnTriggerStay(Collider collider)
@@ -47,5 +54,10 @@ public class HealthcareSystem : MonoBehaviour
             Health += HealthRecuperation * Time.deltaTime;
             HealthSlider.value = Health;
         }
+    }
+    IEnumerator Cont()
+    {
+        yield return new WaitForSeconds(1);
+        Health -= DamageFloor;
     }
 }

@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public float MaxTimeImpulso = 2;
     public float impulso = 15;
     float TimerImpulso = 0;
-    bool impulsoVerification = false;
+    public bool impulsoVerification = false;
 
     void Start()
     {
@@ -89,10 +89,10 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Impulso"))
+        /*if (other.gameObject.CompareTag("Impulso"))
         {
             impulsoVerification = true;
-        }
+        }*/
         if (other.gameObject.CompareTag("Nitro"))
         {
             nitroItemVerification = true;

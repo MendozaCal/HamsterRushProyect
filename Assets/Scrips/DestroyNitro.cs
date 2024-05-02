@@ -11,7 +11,7 @@ public class DestroyNitro : MonoBehaviour
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
             StartCoroutine(ToggleObject());
-        }
+        }   
     }
 
     IEnumerator ToggleObject()
