@@ -21,8 +21,8 @@ public class NPCroute : MonoBehaviour
     [Header("-----Impulso Rampa-----")]
     public float MaxTimeImpulso = 2;
     public float impulso = 10;
-    float TimerImpulso = 0;
-    bool impulsoVerification = false;
+    //float TimerImpulso = 0;
+    //bool impulsoVerification = false;
 
     private void Start()
     {
@@ -85,9 +85,13 @@ public class NPCroute : MonoBehaviour
     }*/
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Impulso"))
+        /*if (other.gameObject.CompareTag("Impulso"))
         {
             impulsoVerification = true;
+        }*/
+        if (other.gameObject.CompareTag("Nitro"))
+        {
+            maxNitro += nitroItem;
         }
     }
     IEnumerator UseNitro()
