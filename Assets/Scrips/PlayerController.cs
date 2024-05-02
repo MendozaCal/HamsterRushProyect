@@ -13,17 +13,13 @@ public class PlayerController : MonoBehaviour
     public float currentSpeed = 0;
     Rigidbody rb;
 
-    [Header("-----Position-----")]
-    public GameObject[] points;
-    public float playerDistance;
-    public PositionManager master;
-
     [Header("-----Nitro-----")]
     public float maxNitro = 100;
     public float nitroPower = 10;
     public float nitroItem = 25;
     bool nitroItemVerification = false;
     public Slider NitroSlider;
+    //public GameObject NitroItem;
     
     [Header("-----Impulso Rampa-----")]
     public float MaxTimeImpulso = 2;
@@ -43,13 +39,8 @@ public class PlayerController : MonoBehaviour
         maxSpeed = Mathf.Min(maxSpeed, 20);
         maxNitro = Mathf.Min(maxNitro, 100);
         maxNitro = Mathf.Max(maxNitro, 0);
-        //FindPosition();
         MoveHamster();
         Nitro();
-    }
-    public void FindPosition()
-    {
-        playerDistance = Vector3.Distance(points[master.currentPoint].transform.position, this.transform.position);
     }
     public void MoveHamster()
     {
