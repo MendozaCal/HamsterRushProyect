@@ -7,7 +7,7 @@ public class NPCroute : MonoBehaviour
     [Header("-----Move-----")]
     public Transform[] waypoints; 
     public float speed = 15;
-    public float InicialSpeed;
+    float InicialSpeed;
     private int currentWaypoint = 0;
     Rigidbody rb;
 
@@ -21,8 +21,8 @@ public class NPCroute : MonoBehaviour
     [Header("-----Impulso Rampa-----")]
     public float MaxTimeImpulso = 2;
     public float impulso = 10;
-    //float TimerImpulso = 0;
-    //bool impulsoVerification = false;
+    float TimerImpulso = 0;
+    bool impulsoVerification = false;
 
     private void Start()
     {
@@ -61,7 +61,7 @@ public class NPCroute : MonoBehaviour
     }
     void NitroNPC()
     {
-        if (maxNitro > 0)
+        if (maxNitro > 0 && impulsoVerification == false)
         {
             RandomValor = Random.Range(0, 10);
             if (RandomValor == 1)
@@ -70,8 +70,17 @@ public class NPCroute : MonoBehaviour
                 StartCoroutine(UseNitro());
             }
         }
+        else if (impulsoVerification == true)
+        {
+            BustRampa();
+
+        }
+        else
+        {
+            speed = InicialSpeed;
+        }
     }
-    /*public void BustRampa()
+    public void BustRampa()
     {
         speed = InicialSpeed;
         speed += impulso;
@@ -82,13 +91,13 @@ public class NPCroute : MonoBehaviour
             impulsoVerification = false;
             TimerImpulso = 0;
         }
-    }*/
+    }
     private void OnTriggerEnter(Collider other)
     {
-        /*if (other.gameObject.CompareTag("Impulso"))
+        if (other.gameObject.CompareTag("Impulso"))
         {
             impulsoVerification = true;
-        }*/
+        }
         if (other.gameObject.CompareTag("Nitro"))
         {
             maxNitro += nitroItem;
