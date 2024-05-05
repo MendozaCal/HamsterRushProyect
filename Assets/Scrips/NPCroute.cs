@@ -22,7 +22,7 @@ public class NPCroute : MonoBehaviour
     public float MaxTimeImpulso = 2;
     public float impulso = 10;
     float TimerImpulso = 0;
-    bool impulsoVerification = false;
+    public bool impulsoVerificationNPC = false;
 
     private void Start()
     {
@@ -61,7 +61,7 @@ public class NPCroute : MonoBehaviour
     }
     void NitroNPC()
     {
-        if (maxNitro > 0 && impulsoVerification == false)
+        if (maxNitro > 0 && impulsoVerificationNPC == false)
         {
             RandomValor = Random.Range(0, 10);
             if (RandomValor == 1)
@@ -70,7 +70,7 @@ public class NPCroute : MonoBehaviour
                 StartCoroutine(UseNitro());
             }
         }
-        else if (impulsoVerification == true)
+        else if (impulsoVerificationNPC == true)
         {
             BustRampa();
 
@@ -88,7 +88,7 @@ public class NPCroute : MonoBehaviour
         if (TimerImpulso >= MaxTimeImpulso)
         {
             speed = InicialSpeed;
-            impulsoVerification = false;
+            impulsoVerificationNPC = false;
             TimerImpulso = 0;
         }
     }
@@ -96,7 +96,7 @@ public class NPCroute : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Impulso"))
         {
-            impulsoVerification = true;
+            impulsoVerificationNPC = true;
         }
         if (other.gameObject.CompareTag("Nitro"))
         {

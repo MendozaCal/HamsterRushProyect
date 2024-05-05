@@ -14,7 +14,7 @@ public class HealthcareSystem : MonoBehaviour
     public PlayerController playerController;
     private void Start()
     {
-        HealthSlider.maxValue = Health;
+        //HealthSlider.maxValue = Health;
     }
     private void Update()
     {
