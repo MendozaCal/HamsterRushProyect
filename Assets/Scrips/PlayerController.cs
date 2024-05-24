@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(horizontalInput, 0, verticalInput) * maxSpeed;
-        movement.y = rb.velocity.y + (Physics.gravity.y * Time.deltaTime); ;
+        movement.y = rb.velocity.y + (Physics.gravity.y *1.2f* Time.deltaTime); ;
 
         rb.velocity = transform.TransformDirection(movement);
 

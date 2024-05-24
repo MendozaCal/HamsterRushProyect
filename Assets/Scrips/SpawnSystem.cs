@@ -36,9 +36,7 @@ public class SpawnSystem : MonoBehaviour
         yield return new WaitForSeconds(3);
         posPlayer.position = psNewRespawn;//La nueva posición de player será la del objeto trigger con tag "New Respawn"
         playerController.enabled = true;
-        //playerController.currentSpeed = 0;
         healthcareSystem.Health += 100;//Restablecer vida al aparecer
-        HealthSlider.value = healthcareSystem.Health;//HUD
         isRespawning = false;
     }
 }

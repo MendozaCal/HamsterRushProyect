@@ -34,11 +34,6 @@ public class HealthcareSystem : MonoBehaviour
             Health -= DamageFloor;
             HealthSlider.value = Health;
         }
-        if (collision.gameObject.CompareTag("Abismo"))
-        {
-            Health = 0;
-            HealthSlider.value = Health;
-        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -47,12 +42,17 @@ public class HealthcareSystem : MonoBehaviour
             playerController.impulsoVerification = true;
             StartCoroutine(Cont());
         }
-    }
-    private void OnTriggerStay(Collider collider)
-    {
-        if (collider.gameObject.CompareTag("Pits"))
+        if (other.gameObject.CompareTag("Abismo"))
         {
-            Health += HealthRecuperation * Time.deltaTime;
+            Health = 0;
+            HealthSlider.value = Health;
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Pits"))
+        {
+            Health += HealthRecuperation * Time.deltaTime * 0.75f;
             HealthSlider.value = Health;
         }
     }
