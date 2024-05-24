@@ -38,32 +38,29 @@ public class PlayerController : MonoBehaviour
         maxSpeed = Mathf.Min(maxSpeed, speed);
         maxNitro = Mathf.Min(maxNitro, 100);
         maxNitro = Mathf.Max(maxNitro, 0);
-        MoveHamster();
         Nitro();
+        MoveHamster();
     }
     public void MoveHamster()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        // Calcular el vector de movimiento en función de la entrada del usuario
         Vector3 movement = new Vector3(horizontalInput, 0, verticalInput) * maxSpeed;
-        movement.y = rb.velocity.y;
+        movement.y = rb.velocity.y + (Physics.gravity.y * Time.deltaTime); ;
 
-        // Aplicar el movimiento al Rigidbody
         rb.velocity = transform.TransformDirection(movement);
 
-        // Calcular y aplicar la rotación
         Quaternion rotation = Quaternion.Euler(0, horizontalInput * rotationSpeed * Time.deltaTime, 0);
         rb.MoveRotation(rb.rotation * rotation);
     }
     public void Nitro()
     {
+        NitroSlider.value = maxNitro;
         if (Input.GetKey(KeyCode.LeftShift) && maxNitro > 0)
         {
             maxNitro -= Time.deltaTime * 10;
             maxSpeed += nitroPower;
-            NitroSlider.value = maxNitro;
         }
         else if(impulsoVerification == true)
         {
@@ -77,7 +74,6 @@ public class PlayerController : MonoBehaviour
         if(nitroItemVerification == true)
         {
             maxNitro += nitroItem;
-            NitroSlider.value = maxNitro;
             nitroItemVerification = false;
         }
     }

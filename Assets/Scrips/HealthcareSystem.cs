@@ -14,12 +14,14 @@ public class HealthcareSystem : MonoBehaviour
     public PlayerController playerController;
     private void Start()
     {
-        //HealthSlider.maxValue = Health;
+        HealthSlider.maxValue = Health;
+        HealthSlider.interactable = false;
     }
     private void Update()
     {
         Health = Mathf.Min(Health, 100); // Limitar a Health a un máximo de 100
         Health = Mathf.Max(Health, 0);
+        HealthSlider.value = Health;
         if (Health <= 0)
         {
             spawnSystem.DeadPlayer();
@@ -43,7 +45,6 @@ public class HealthcareSystem : MonoBehaviour
         if (other.gameObject.CompareTag("Impulso"))
         {
             playerController.impulsoVerification = true;
-            HealthSlider.value = Health;
             StartCoroutine(Cont());
         }
     }
