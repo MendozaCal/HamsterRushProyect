@@ -123,6 +123,6 @@ public class NPCroute : MonoBehaviour
     void UseNitro()
     {
         speed += nitroPower;
-        maxNitro -= Time.deltaTime * 9;
+        maxNitro -= Time.deltaTime * 10;
     }
 }

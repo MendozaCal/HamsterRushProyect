@@ -38,6 +38,7 @@ public class SpawnSystemNPC : MonoBehaviour
         yield return new WaitForSeconds(3);
         NPC.position = psNewRespawn;
         NPCroute.enabled = true;
+        NPCroute.maxNitro += 100;
         healthcareSystemNPC.Health += 100;
         isRespawningNPC = false;
     }

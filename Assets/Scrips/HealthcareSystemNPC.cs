@@ -11,10 +11,7 @@ public class HealthcareSystemNPC : MonoBehaviour
     public float HealthRecuperation = 25;
     public SpawnSystemNPC spawnSystemNPC;
     public NPCroute NPCroute;
-    private void Start()
-    {
-        //HealthSlider.maxValue = Health;
-    }
+    
     private void Update()
     {
         Health = Mathf.Min(Health, 100); // Limitar a Health a un máximo de 100

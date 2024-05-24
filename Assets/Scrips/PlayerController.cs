@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     public float maxNitro = 100;
     public float nitroPower = 15;
     public float nitroItem = 25;
-    bool nitroItemVerification = false;
     public Slider NitroSlider;
     
     [Header("-----Impulso Rampa-----")]
@@ -31,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("-----Cont Vueltas-----")]
     public TextMeshPro Contador;
-    int laps = 1;
+    int laps = 0;
     public int MaxLaps = 3;
 
     void Start()
@@ -108,7 +107,7 @@ public class PlayerController : MonoBehaviour
     {
         if (laps > MaxLaps)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
         }
     }
 }
