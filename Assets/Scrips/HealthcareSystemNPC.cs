@@ -30,10 +30,7 @@ public class HealthcareSystemNPC : MonoBehaviour
         {
             Health -= DamageFloor;
         }
-        if (collision.gameObject.CompareTag("Abismo"))
-        {
-            Health = 0;
-        }
+        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -41,6 +38,10 @@ public class HealthcareSystemNPC : MonoBehaviour
         {
             NPCroute.impulsoVerificationNPC = true;
             StartCoroutine(Cont());
+        }
+        if (other.gameObject.CompareTag("Abismo"))
+        {
+            Health = 0;
         }
     }
     private void OnTriggerStay(Collider collider)

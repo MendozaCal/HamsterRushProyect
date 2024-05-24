@@ -10,13 +10,17 @@ public class NPCroute : MonoBehaviour
     float InicialSpeed;
     private int currentWaypoint = 0;
     Rigidbody rb;
+    public float gravity;
 
     [Header("-----Nitro-----")]
     public float maxNitro = 100;
     public float nitroPower = 10;
     public float nitroItem = 25;
-    public float RandomValor;
-    public float Timer = 0;
+    public float RandomDuration;
+    public float RandomDelay;
+    public float timerDuration = 0;
+    public float timerDelay = 0;
+    bool comprover = false;
 
     [Header("-----Impulso Rampa-----")]
     public float MaxTimeImpulso = 2;
@@ -28,6 +32,8 @@ public class NPCroute : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         InicialSpeed = speed;
+        RandomDuration = Random.Range(10, 20);
+        RandomDelay= Random.Range(3, 10);
     }
     void FixedUpdate()
     {
@@ -35,9 +41,9 @@ public class NPCroute : MonoBehaviour
         maxNitro = Mathf.Max(maxNitro, 0);
         maxNitro = Mathf.Min(maxNitro, 100);
 
-        calculateDistance();
-        MoveToWaypoint();
         NitroNPC();
+        MoveToWaypoint();
+        calculateDistance();
     }
     void calculateDistance()
     {
@@ -56,24 +62,35 @@ public class NPCroute : MonoBehaviour
         Vector3 direction = waypoints[currentWaypoint].position - transform.position;
         direction.Normalize();
         Vector3 velocity = direction * speed;
+        velocity.y = rb.velocity.y + (Physics.gravity.y * gravity * Time.deltaTime);
         rb.velocity = velocity;
         transform.LookAt(waypoints[currentWaypoint]);
     }
     void NitroNPC()
     {
-        if (maxNitro > 0 && impulsoVerificationNPC == false)
+        if (maxNitro > 0)
         {
-            RandomValor = Random.Range(0, 10);
-            if (RandomValor == 1)
+            timerDelay += Time.deltaTime;
+        }
+        else
+        {
+            timerDelay = 0;
+            timerDuration = 0;
+        }
+        if (maxNitro > 0 && impulsoVerificationNPC == false && timerDelay >= RandomDelay)
+        {
+            timerDuration += Time.deltaTime;
+            UseNitro();
+            if (timerDuration >= RandomDuration)
             {
-                speed += nitroPower;
-                StartCoroutine(UseNitro());
+                timerDelay = 0;
+                timerDuration = 0;
+                speed = InicialSpeed;
             }
         }
         else if (impulsoVerificationNPC == true)
         {
             BustRampa();
-
         }
         else
         {
@@ -103,10 +120,9 @@ public class NPCroute : MonoBehaviour
             maxNitro += nitroItem;
         }
     }
-    IEnumerator UseNitro()
+    void UseNitro()
     {
-        maxNitro -= Time.deltaTime * 10;
-        yield return new WaitForSeconds(5);
-        speed = InicialSpeed;
+        speed += nitroPower;
+        maxNitro -= Time.deltaTime * 9;
     }
 }

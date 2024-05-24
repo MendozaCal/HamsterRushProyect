@@ -79,12 +79,6 @@ public class PlayerController : MonoBehaviour
         {
             maxSpeed = speed;
         }
-
-        if(nitroItemVerification == true)
-        {
-            maxNitro += nitroItem;
-            nitroItemVerification = false;
-        }
     }
     public void BustRampa()
     {
@@ -102,7 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Nitro"))
         {
-            nitroItemVerification = true;
+            maxNitro += nitroItem;
         }
         if (other.gameObject.CompareTag("Meta"))
         {
