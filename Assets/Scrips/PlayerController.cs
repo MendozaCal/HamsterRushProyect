@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 45;
     float speed;
     public float currentSpeed = 0;
+    public float gravity;
     Rigidbody rb;
 
     [Header("-----Nitro-----")]
@@ -26,6 +29,11 @@ public class PlayerController : MonoBehaviour
     float TimerImpulso = 0;
     public bool impulsoVerification = false;
 
+    [Header("-----Cont Vueltas-----")]
+    public TextMeshPro Contador;
+    int laps = 1;
+    public int MaxLaps = 3;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -40,6 +48,7 @@ public class PlayerController : MonoBehaviour
         maxNitro = Mathf.Max(maxNitro, 0);
         Nitro();
         MoveHamster();
+        FinalRase();
     }
     public void MoveHamster()
     {
@@ -47,7 +56,7 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(horizontalInput, 0, verticalInput) * maxSpeed;
-        movement.y = rb.velocity.y + (Physics.gravity.y *1.2f* Time.deltaTime); ;
+        movement.y = rb.velocity.y + (Physics.gravity.y * gravity * Time.deltaTime); ;
 
         rb.velocity = transform.TransformDirection(movement);
 
@@ -94,6 +103,18 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Nitro"))
         {
             nitroItemVerification = true;
+        }
+        if (other.gameObject.CompareTag("Meta"))
+        {
+            laps++;
+            Contador.text = $"Lap {laps}/{MaxLaps}";
+        }
+    }
+    void FinalRase()
+    {
+        if (laps > MaxLaps)
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }

@@ -13,7 +13,6 @@ public class DestroyNitro : MonoBehaviour
             StartCoroutine(ToggleObject());
         }   
     }
-
     IEnumerator ToggleObject()
     {
         Nitro.SetActive(false);

@@ -431,6 +431,8 @@ MonoBehaviour:
   MaxTimeImpulso: 2
   impulso: 15
   impulsoVerification: 0
+  Contador: {fileID: 0}
+  MaxLaps: 3
 --- !u!114 &70796622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2943,7 +2945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &833199857
 Transform:
   m_ObjectHideFlags: 0
