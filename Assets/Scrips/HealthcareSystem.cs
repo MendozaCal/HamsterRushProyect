@@ -55,6 +55,10 @@ public class HealthcareSystem : MonoBehaviour
             Health += HealthRecuperation * Time.deltaTime * 0.75f;
             HealthSlider.value = Health;
         }
+        if (collision.gameObject.CompareTag("Borde"))
+        {
+            Health -= 50 * Time.deltaTime;
+        }
     }
     IEnumerator Cont()
     {

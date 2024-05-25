@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour
     public TextMeshPro Contador;
     int laps = 0;
     public int MaxLaps = 3;
-
+    public bool comprover1 = false;
+    public bool comprover2 = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
         maxSpeed = Mathf.Min(maxSpeed, speed);
         maxNitro = Mathf.Min(maxNitro, 100);
         maxNitro = Mathf.Max(maxNitro, 0);
+        NitroSlider.value = maxNitro;
         Nitro();
         MoveHamster();
         FinalRase();
@@ -64,7 +66,6 @@ public class PlayerController : MonoBehaviour
     }
     public void Nitro()
     {
-        NitroSlider.value = maxNitro;
         if (Input.GetKey(KeyCode.LeftShift) && maxNitro > 0)
         {
             maxNitro -= Time.deltaTime * 10;
@@ -99,8 +100,22 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Meta"))
         {
+            comprover1 = true;
+        }
+        if (other.gameObject.CompareTag("Meta2"))
+        {
+            comprover2 = true;
+        }
+        if (comprover1 == true && comprover2 == true)
+        {
             laps++;
             Contador.text = $"Lap {laps}/{MaxLaps}";
+            comprover1 = false;
+            comprover2 = false;   
+        }
+        if (laps >= MaxLaps && other.gameObject.CompareTag("Meta"))
+        {
+            Contador.text = "Last Lap";
         }
     }
     void FinalRase()
