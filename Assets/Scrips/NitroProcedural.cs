@@ -8,10 +8,6 @@ public class NitroProcedural : MonoBehaviour
     public int randomIndex;
     void Start()
     {
-        foreach(GameObject obj in LineNitro)
-        {
-            obj.SetActive(false);
-        }
         ShowItem();
         
     }

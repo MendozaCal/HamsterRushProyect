@@ -12,6 +12,8 @@ public class HealthcareSystem : MonoBehaviour
     public SpawnSystem spawnSystem;
     public Slider HealthSlider;
     public PlayerController playerController;
+    public bool sueloVerifi = false;
+
     private void Start()
     {
         HealthSlider.maxValue = Health;
@@ -27,25 +29,27 @@ public class HealthcareSystem : MonoBehaviour
             spawnSystem.DeadPlayer();
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Suelo"))
-        {
-            Health -= DamageFloor;
-            HealthSlider.value = Health;
-        }
-    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Impulso"))
         {
             playerController.impulsoVerification = true;
-            StartCoroutine(Cont());
+            sueloVerifi = true;
+            
         }
         if (other.gameObject.CompareTag("Abismo"))
         {
             Health = 0;
             HealthSlider.value = Health;
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (sueloVerifi == true && collision.gameObject.CompareTag("Suelo"))
+        {
+            Health -= DamageFloor;
+            sueloVerifi = false;
         }
     }
     private void OnCollisionStay(Collision collision)
@@ -63,6 +67,5 @@ public class HealthcareSystem : MonoBehaviour
     IEnumerator Cont()
     {
         yield return new WaitForSeconds(1);
-        Health -= DamageFloor;
     }
 }
