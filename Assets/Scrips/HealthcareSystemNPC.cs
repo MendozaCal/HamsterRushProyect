@@ -11,6 +11,7 @@ public class HealthcareSystemNPC : MonoBehaviour
     public float HealthRecuperation = 25;
     public SpawnSystemNPC spawnSystemNPC;
     public NPCroute NPCroute;
+    public bool sueloVerify = false;
     
     private void Update()
     {
@@ -21,25 +22,26 @@ public class HealthcareSystemNPC : MonoBehaviour
             spawnSystemNPC.DeadNPC();
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Suelo"))
-        {
-            Health -= DamageFloor;
-        }
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Impulso"))
         {
             NPCroute.impulsoVerificationNPC = true;
-            StartCoroutine(Cont());
+            sueloVerify = true;
         }
         if (other.gameObject.CompareTag("Abismo"))
         {
             Health = 0;
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (sueloVerify = true && collision.gameObject.CompareTag("Suelo"))
+        {
+            Health -= DamageFloor;
+            sueloVerify = false;
+        }
+
     }
     private void OnTriggerStay(Collider collider)
     {
@@ -47,10 +49,5 @@ public class HealthcareSystemNPC : MonoBehaviour
         {
             Health += HealthRecuperation * Time.deltaTime;
         }
-    }
-    IEnumerator Cont()
-    {
-        yield return new WaitForSeconds(1);
-        Health -= DamageFloor;
     }
 }

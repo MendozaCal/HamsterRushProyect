@@ -20,7 +20,6 @@ public class NPCroute : MonoBehaviour
     public float RandomDelay;
     public float timerDuration = 0;
     public float timerDelay = 0;
-    bool comprover = false;
 
     [Header("-----Impulso Rampa-----")]
     public float MaxTimeImpulso = 2;
