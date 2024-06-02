@@ -50,14 +50,4 @@ public class Manager : MonoBehaviour
         Sliders.SetActive(true);
         pauseMenu.SetActive(false);
     }
-    public void JumpScene(int escena)
-    {
-        SceneManager.LoadScene(escena);
-        Time.timeScale = 1;
-        AudioListener.pause = false;
-    }
-    public void Quit()
-    {
-        Application.Quit();
-    }
 }
