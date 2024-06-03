@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class BottonManager : MonoBehaviour
 {
-    public void JumpScene(int escena)
+    public void JumpScene(string escena)
     {
         SceneManager.LoadScene(escena);
         Time.timeScale = 1;
