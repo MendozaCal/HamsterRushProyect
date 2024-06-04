@@ -16,6 +16,7 @@ TagManager:
   - Meta
   - Borde
   - Meta2
+  - FinalMeta
   layers:
   - Default
   - TransparentFX

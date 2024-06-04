@@ -21,8 +21,7 @@ public class HealthcareSystem : MonoBehaviour
     }
     private void Update()
     {
-        Health = Mathf.Min(Health, 100); // Limitar a Health a un máximo de 100
-        Health = Mathf.Max(Health, 0);
+        Health = Mathf.Clamp(Health, 0, 100);
         HealthSlider.value = Health;
         if (Health <= 0)
         {
@@ -64,8 +63,5 @@ public class HealthcareSystem : MonoBehaviour
             Health -= 50 * Time.deltaTime;
         }
     }
-    IEnumerator Cont()
-    {
-        yield return new WaitForSeconds(1);
-    }
+    
 }
