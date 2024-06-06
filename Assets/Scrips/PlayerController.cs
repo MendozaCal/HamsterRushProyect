@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(horizontalInput, 0, verticalInput * maxSpeed) ;
+        Vector3 movement = new Vector3(0, 0, verticalInput * maxSpeed) ;
         movement.y = rb.velocity.y + (Physics.gravity.y * gravity * Time.deltaTime); ;
 
         rb.velocity = transform.TransformDirection(movement);

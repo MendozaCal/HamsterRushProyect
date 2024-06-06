@@ -37,8 +37,7 @@ public class NPCroute : MonoBehaviour
     void FixedUpdate()
     {
         speed = Mathf.Min(speed, InicialSpeed);
-        maxNitro = Mathf.Max(maxNitro, 0);
-        maxNitro = Mathf.Min(maxNitro, 100);
+        maxNitro = Mathf.Clamp(maxNitro, 0, 100);
 
         NitroNPC();
         MoveToWaypoint();
