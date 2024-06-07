@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class SpawnSystem : MonoBehaviour
 {
     [Header("-----Player-----")]
-    public Transform posRespawn;
     public Transform posPlayer;
     public Vector3 psNewRespawn;
     public HealthcareSystem healthcareSystem;
@@ -34,9 +33,9 @@ public class SpawnSystem : MonoBehaviour
         isRespawning = true;
         playerController.enabled = false;
         yield return new WaitForSeconds(5);
-        posPlayer.position = psNewRespawn;//La nueva posición de player será la del objeto trigger con tag "New Respawn"
+        posPlayer.position = psNewRespawn;
         playerController.enabled = true;
-        healthcareSystem.Health += 100;//Restablecer vida al aparecer
+        healthcareSystem.Health += 100;
         isRespawning = false;
     }
 }
