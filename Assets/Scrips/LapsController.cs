@@ -17,6 +17,7 @@ public class LapsController : MonoBehaviour
     public GameObject MetaFinal;
     PlayerController playerController;
     NPCroute NPCroute;
+    public GameObject Humo;
 
     private void Start()
     {
@@ -27,7 +28,11 @@ public class LapsController : MonoBehaviour
     }
     private void Update()
     {
-        cont += Time.deltaTime * 0.75f;
+        StartController();
+    }
+    void StartController()
+    {
+        cont += Time.deltaTime * 0.5f;
         float contadorRedondeado = Mathf.Round(cont);
         Contador.text = contadorRedondeado.ToString();
         if (cont >= 3)
