@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public TextMeshPro Text;
     [Header("-----Move-----")]
     public float maxSpeed = 20;
     public float accelerationTime = 10;

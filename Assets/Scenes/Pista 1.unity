@@ -12511,8 +12511,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   psNewRespawn: {x: 0, y: 0, z: 0}
   NPC: {fileID: 459037601}
-  healthcareSystemNPC: {fileID: 459037595}
-  NPCroute: {fileID: 459037596}
 --- !u!114 &459037595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12528,8 +12526,6 @@ MonoBehaviour:
   Health: 100
   DamageFloor: 20
   HealthRecuperation: 25
-  spawnSystemNPC: {fileID: 459037594}
-  NPCroute: {fileID: 459037596}
   sueloVerify: 0
 --- !u!114 &459037596
 MonoBehaviour:
@@ -13010,7 +13006,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -13477,8 +13473,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   psNewRespawn: {x: 0, y: 0, z: 0}
   NPC: {fileID: 493062014}
-  healthcareSystemNPC: {fileID: 493062008}
-  NPCroute: {fileID: 493062009}
 --- !u!114 &493062008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13494,8 +13488,6 @@ MonoBehaviour:
   Health: 100
   DamageFloor: 20
   HealthRecuperation: 25
-  spawnSystemNPC: {fileID: 493062007}
-  NPCroute: {fileID: 493062009}
   sueloVerify: 0
 --- !u!114 &493062009
 MonoBehaviour:
@@ -41504,8 +41496,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   psNewRespawn: {x: 0, y: 0, z: 0}
   NPC: {fileID: 1173495568}
-  healthcareSystemNPC: {fileID: 1173495570}
-  NPCroute: {fileID: 1173495571}
 --- !u!114 &1173495570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41521,8 +41511,6 @@ MonoBehaviour:
   Health: 100
   DamageFloor: 20
   HealthRecuperation: 25
-  spawnSystemNPC: {fileID: 1173495569}
-  NPCroute: {fileID: 1173495571}
   sueloVerify: 0
 --- !u!114 &1173495571
 MonoBehaviour:
@@ -55695,8 +55683,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   psNewRespawn: {x: 0, y: 0, z: 0}
   NPC: {fileID: 1741565770}
-  healthcareSystemNPC: {fileID: 1741565764}
-  NPCroute: {fileID: 1741565765}
 --- !u!114 &1741565764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55712,8 +55698,6 @@ MonoBehaviour:
   Health: 100
   DamageFloor: 20
   HealthRecuperation: 25
-  spawnSystemNPC: {fileID: 1741565763}
-  NPCroute: {fileID: 1741565765}
   sueloVerify: 0
 --- !u!114 &1741565765
 MonoBehaviour:
@@ -57421,7 +57405,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -61672,8 +61656,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   psNewRespawn: {x: 0, y: 0, z: 0}
   NPC: {fileID: 2012769791}
-  healthcareSystemNPC: {fileID: 2012769785}
-  NPCroute: {fileID: 2012769786}
 --- !u!114 &2012769785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61689,8 +61671,6 @@ MonoBehaviour:
   Health: 100
   DamageFloor: 20
   HealthRecuperation: 25
-  spawnSystemNPC: {fileID: 2012769784}
-  NPCroute: {fileID: 2012769786}
   sueloVerify: 0
 --- !u!114 &2012769786
 MonoBehaviour:
@@ -63891,10 +63871,10 @@ GameObject:
   - component: {fileID: 2094172367}
   - component: {fileID: 2094172373}
   - component: {fileID: 2094172372}
-  - component: {fileID: 2094172371}
   - component: {fileID: 2094172370}
   - component: {fileID: 2094172369}
   - component: {fileID: 2094172368}
+  - component: {fileID: 2094172374}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -63952,8 +63932,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posPlayer: {fileID: 2094172367}
   psNewRespawn: {x: 0, y: 0, z: 0}
-  healthcareSystem: {fileID: 2094172370}
-  playerController: {fileID: 2094172371}
   HealthSlider: {fileID: 1708696872}
 --- !u!114 &2094172370
 MonoBehaviour:
@@ -63970,34 +63948,8 @@ MonoBehaviour:
   Health: 100
   DamageFloor: 20
   HealthRecuperation: 25
-  spawnSystem: {fileID: 2094172369}
   HealthSlider: {fileID: 1708696872}
-  playerController: {fileID: 2094172371}
   sueloVerifi: 0
---- !u!114 &2094172371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2094172366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e9211ac6198b914ba56f29fa891ea54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 20
-  accelerationTime: 10
-  rotationSpeed: 90
-  currentSpeed: 0
-  gravity: 3
-  maxNitro: 100
-  nitroPower: 15
-  nitroItem: 25
-  NitroSlider: {fileID: 459690297}
-  MaxTimeImpulso: 3
-  impulso: 15
-  impulsoVerification: 0
 --- !u!135 &2094172372
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -64046,6 +63998,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &2094172374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094172366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9211ac6198b914ba56f29fa891ea54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Text: {fileID: 0}
+  maxSpeed: 20
+  accelerationTime: 10
+  rotationSpeed: 90
+  currentSpeed: 0
+  gravity: 3
+  maxNitro: 100
+  nitroPower: 15
+  nitroItem: 25
+  NitroSlider: {fileID: 459690297}
+  MaxTimeImpulso: 2
+  impulso: 15
+  impulsoVerification: 0
 --- !u!1 &2095668781 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 144680dbe58066e47a304479419b38a6, type: 3}

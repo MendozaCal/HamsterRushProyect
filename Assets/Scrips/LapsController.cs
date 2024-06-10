@@ -1,18 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LapsController : PlayerController
+public class LapsController : MonoBehaviour
 {
     [Header("-----Cont Vueltas-----")]
     public TextMeshPro Contador;
+    float cont;
     int laps = 1;
     public int MaxLaps = 3;
     public bool comprover1 = false;
     public bool comprover2 = false;
     public GameObject MetaFinal;
+    PlayerController playerController;
+
+    private void Start()
+    {
+        playerController = GetComponent<PlayerController>();
+        playerController.enabled = false;
+    }
+    private void Update()
+    {
+        cont += Time.deltaTime * 0.75f;
+        float contadorRedondeado = Mathf.Round(cont);
+        Contador.text = contadorRedondeado.ToString();
+        if (cont >= 3)
+        {
+            Contador.text = $"Start";
+            playerController.enabled = true;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
