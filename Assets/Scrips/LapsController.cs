@@ -16,11 +16,14 @@ public class LapsController : MonoBehaviour
     public bool comprover2 = false;
     public GameObject MetaFinal;
     PlayerController playerController;
+    NPCroute NPCroute;
 
     private void Start()
     {
         playerController = GetComponent<PlayerController>();
         playerController.enabled = false;
+        NPCroute = FindObjectOfType<NPCroute>();
+        NPCroute.enabled = false;
     }
     private void Update()
     {
@@ -31,6 +34,7 @@ public class LapsController : MonoBehaviour
         {
             Contador.text = $"Start";
             playerController.enabled = true;
+            NPCroute.enabled = true;
         }
     }
 

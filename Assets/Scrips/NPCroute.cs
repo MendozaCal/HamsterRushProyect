@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class NPCroute : MonoBehaviour
 {
+    public TextMeshPro text;
     [Header("-----Move-----")]
     public Transform[] waypoints; 
     public float speed = 15;
@@ -38,9 +40,11 @@ public class NPCroute : MonoBehaviour
     {
         speed = Mathf.Min(speed, InicialSpeed);
         maxNitro = Mathf.Clamp(maxNitro, 0, 100);
-
+        if (text.text == $"Start")
+        {
+            MoveToWaypoint();
+        }
         NitroNPC();
-        MoveToWaypoint();
         calculateDistance();
     }
     void calculateDistance()
