@@ -9,12 +9,14 @@ public class SpawnSystemNPC : MonoBehaviour
     [Header("-----NPC-----")]
     public Vector3 psNewRespawn;
     public Transform NPC;
-    public HealthcareSystemNPC healthcareSystemNPC;
-    public NPCroute NPCroute;
+    HealthcareSystemNPC healthcareSystemNPC;
+    NPCroute NPCroute;
     bool isRespawningNPC;
     private void Start()
     {
         psNewRespawn = NPC.position;
+        healthcareSystemNPC = GetComponent<HealthcareSystemNPC>();
+        NPCroute = GetComponent<NPCroute>();
     }
     public void DeadNPC()
     {

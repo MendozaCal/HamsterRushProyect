@@ -9,10 +9,14 @@ public class HealthcareSystemNPC : MonoBehaviour
     public float Health = 100;
     public float DamageFloor = 20;
     public float HealthRecuperation = 25;
-    public SpawnSystemNPC spawnSystemNPC;
-    public NPCroute NPCroute;
+    SpawnSystemNPC spawnSystemNPC;
+    NPCroute NPCroute;
     public bool sueloVerify = false;
-    
+    private void Start()
+    {
+        spawnSystemNPC = GetComponent<SpawnSystemNPC>();
+        NPCroute = GetComponent<NPCroute>();
+    }
     private void Update()
     {
         Health = Mathf.Min(Health, 100); // Limitar a Health a un máximo de 100

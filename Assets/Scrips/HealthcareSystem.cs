@@ -9,13 +9,15 @@ public class HealthcareSystem : MonoBehaviour
     public float Health = 100;
     public float DamageFloor = 20;
     public float HealthRecuperation = 25;
-    public SpawnSystem spawnSystem;
     public Slider HealthSlider;
-    public PlayerController playerController;
+    SpawnSystem spawnSystem;
+    PlayerController playerController;
     public bool sueloVerifi = false;
 
     private void Start()
     {
+        playerController = GetComponent<PlayerController>();
+        spawnSystem = GetComponent<SpawnSystem>();
         HealthSlider.maxValue = Health;
         HealthSlider.interactable = false;
     }

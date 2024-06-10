@@ -9,10 +9,15 @@ public class SpawnSystem : MonoBehaviour
     [Header("-----Player-----")]
     public Transform posPlayer;
     public Vector3 psNewRespawn;
-    public HealthcareSystem healthcareSystem;
-    public PlayerController playerController;
+    HealthcareSystem healthcareSystem;
+    PlayerController playerController;
     public Slider HealthSlider;
     bool isRespawning;
+    private void Start()
+    {
+        healthcareSystem = GetComponent<HealthcareSystem>();
+        playerController = GetComponent<PlayerController>();
+    }
     public void DeadPlayer()
     {
         if (isRespawning)

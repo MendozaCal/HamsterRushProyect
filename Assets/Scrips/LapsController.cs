@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LapsController : MonoBehaviour
+public class LapsController : PlayerController
 {
     [Header("-----Cont Vueltas-----")]
     public TextMeshPro Contador;

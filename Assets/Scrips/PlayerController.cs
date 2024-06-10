@@ -8,12 +8,12 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [Header("-----Move-----")]
-    public float maxSpeed = 15;
+    public float maxSpeed = 20;
     public float accelerationTime = 10;
-    public float rotationSpeed = 45;
+    public float rotationSpeed = 90;
     float speed;
     public float currentSpeed = 0;
-    public float gravity;
+    public float gravity = 3;
     Rigidbody rb;
 
     [Header("-----Nitro-----")]
