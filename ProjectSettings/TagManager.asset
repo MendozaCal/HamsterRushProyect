@@ -17,6 +17,10 @@ TagManager:
   - Borde
   - Meta2
   - FinalMeta
+  - RampsTutorial
+  - NitroTutorial
+  - PitsTutorial
+  - RaceTutorial
   layers:
   - Default
   - TransparentFX

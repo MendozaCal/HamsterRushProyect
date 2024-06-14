@@ -8,11 +8,12 @@ public class HealthcareSystem : MonoBehaviour
 {
     public float Health = 100;
     public float DamageFloor = 20;
-    public float HealthRecuperation = 25;
+    public float HealthRecuperation = 18.75f;
     public Slider HealthSlider;
     SpawnSystem spawnSystem;
     PlayerController playerController;
     public bool sueloVerifi = false;
+    public bool isDamage = false;
 
     private void Start()
     {
@@ -27,10 +28,10 @@ public class HealthcareSystem : MonoBehaviour
         HealthSlider.value = Health;
         if (Health <= 0)
         {
+            playerController.enabled = false;
             spawnSystem.DeadPlayer();
         }
     }
-    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Impulso"))
@@ -43,6 +44,8 @@ public class HealthcareSystem : MonoBehaviour
         {
             Health = 0;
             HealthSlider.value = Health;
+            playerController.maxSpeed = playerController.Speed;
+            playerController.incialSpeed= playerController.Speed;
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -51,14 +54,26 @@ public class HealthcareSystem : MonoBehaviour
         {
             Health -= DamageFloor;
             sueloVerifi = false;
+            playerController.maxSpeed += 2f;
+            playerController.incialSpeed += 2f;
         }
     }
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Pits"))
         {
-            Health += HealthRecuperation * Time.deltaTime * 0.75f;
+            Health += HealthRecuperation * Time.deltaTime;
             HealthSlider.value = Health;
+            if (playerController.maxSpeed > playerController.Speed && Health <= 100)
+            {
+                playerController.maxSpeed -= 2*Time.deltaTime;
+                playerController.incialSpeed -=2*Time.deltaTime;
+                if (Health == 100)
+                {
+                    playerController.maxSpeed = playerController.Speed;
+                    playerController.incialSpeed = playerController.Speed;
+                }
+            }
         }
         if (collision.gameObject.CompareTag("Borde"))
         {

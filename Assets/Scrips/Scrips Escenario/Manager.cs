@@ -10,15 +10,21 @@ public class Manager : MonoBehaviour
     public GameObject EventeSystem;
     public GameObject Sliders;
     private bool isPaused = false;
-    public TextMeshPro TextMeshPro;
-    public float timer = 0;
-
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
+        }
+        if (Time.timeScale > 0)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
     public void TogglePause()

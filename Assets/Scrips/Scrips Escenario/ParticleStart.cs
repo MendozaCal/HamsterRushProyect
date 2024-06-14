@@ -10,6 +10,8 @@ public class ParticleStart : MonoBehaviour
     public GameObject humo2;
     public GameObject humo3;
     public GameObject humo4;
+    public GameObject humo5;
+    public GameObject humo6;
 
     void Update()
     {
@@ -19,6 +21,13 @@ public class ParticleStart : MonoBehaviour
             humo2.SetActive(false);
             humo3.SetActive(true);
             humo4.SetActive(true);
+        }
+        if (text.text == "Last Lap")
+        {
+            humo3.SetActive(false);
+            humo4.SetActive(false);
+            humo5.SetActive(true);
+            humo6.SetActive(true);
         }
     }
 }

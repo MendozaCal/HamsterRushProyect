@@ -73637,6 +73637,7 @@ MonoBehaviour:
   HealthRecuperation: 25
   HealthSlider: {fileID: 1708696872}
   sueloVerifi: 0
+  isDamage: 0
 --- !u!135 &2094172372
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -73697,10 +73698,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9211ac6198b914ba56f29fa891ea54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Text: {fileID: 0}
+  Text: {fileID: 1808562817}
   maxSpeed: 20
   accelerationTime: 10
   rotationSpeed: 90
+  incialSpeed: 0
+  Speed: 0
   currentSpeed: 0
   gravity: 3
   maxNitro: 100
