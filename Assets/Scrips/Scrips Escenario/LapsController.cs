@@ -17,8 +17,6 @@ public class LapsController : MonoBehaviour
     public GameObject MetaFinal;
     PlayerController playerController;
     NPCroute NPCroute;
-    public GameObject Humo;
-
     private void Start()
     {
         playerController = GetComponent<PlayerController>();
