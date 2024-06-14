@@ -10,6 +10,11 @@ public class Manager : MonoBehaviour
     public GameObject EventeSystem;
     public GameObject Sliders;
     private bool isPaused = false;
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

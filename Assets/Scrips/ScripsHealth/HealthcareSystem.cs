@@ -31,11 +31,7 @@ public class HealthcareSystem : MonoBehaviour
             playerController.enabled = false;
             spawnSystem.DeadPlayer();
         }
-        if (Health == 100)
-        {
-            playerController.maxSpeed = playerController.Speed;
-            playerController.incialSpeed = playerController.Speed;
-        }
+        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -51,6 +47,7 @@ public class HealthcareSystem : MonoBehaviour
             HealthSlider.value = Health;
             playerController.maxSpeed = playerController.Speed;
             playerController.incialSpeed= playerController.Speed;
+            sueloVerifi = false;
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -63,9 +60,9 @@ public class HealthcareSystem : MonoBehaviour
             playerController.incialSpeed += 2f;
         }
     }
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.CompareTag("Pits"))
+        if (other.gameObject.CompareTag("Pits"))
         {
             Health += HealthRecuperation * Time.deltaTime;
             HealthSlider.value = Health;
@@ -73,13 +70,20 @@ public class HealthcareSystem : MonoBehaviour
             {
                 playerController.maxSpeed -= 2*Time.deltaTime;
                 playerController.incialSpeed -=2*Time.deltaTime;
-                
+                if (Health == 100)
+                {
+                    playerController.maxSpeed = playerController.Speed;
+                    playerController.incialSpeed = playerController.Speed;
+                }
             }
         }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
         if (collision.gameObject.CompareTag("Borde"))
         {
             Health -= 50 * Time.deltaTime;
         }
     }
-    
+
 }

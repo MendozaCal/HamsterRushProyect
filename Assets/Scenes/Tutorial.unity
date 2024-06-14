@@ -13202,8 +13202,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7.6827846, y: 0.25399494, z: 32.066036}
-  m_Center: {x: 3.3414202, y: -0.37300646, z: 11.965394}
+  m_Size: {x: 7.682784, y: 1.2075298, z: 32.066032}
+  m_Center: {x: 3.3413894, y: -0.33696032, z: 11.964815}
 --- !u!1001 &234901969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20806,7 +20806,7 @@ GameObject:
   - component: {fileID: 436509303}
   m_Layer: 0
   m_Name: road_0001
-  m_TagString: Untagged
+  m_TagString: Pits
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -46174,7 +46174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1476591590
 MonoBehaviour:
   m_ObjectHideFlags: 0
