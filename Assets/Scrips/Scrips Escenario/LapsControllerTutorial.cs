@@ -85,22 +85,18 @@ public class LapsControllerTutorial : MonoBehaviour
         }
         if (other.gameObject.CompareTag("RampsTutorial") && isActiveRamps == false)
         {
-            playerController.maxSpeed = 0;
             StartCoroutine(TutorialControllerRamps());
         }
         if (other.gameObject.CompareTag("NitroTutorial") && isActiveNitro == false)
         {
-            playerController.maxSpeed = 0;
             StartCoroutine(TutorialControllerNitro());
         }
         if (other.gameObject.CompareTag("PitsTutorial") && isActivePits == false)
         {
-            playerController.maxSpeed = 0;
             StartCoroutine(TutorialControllerPits());
         }
         if (other.gameObject.CompareTag("RaceTutorial") && isActiveRace == false)
         {
-            playerController.maxSpeed = 0;
             StartCoroutine(TutorialControllerRace());
         }
     }
