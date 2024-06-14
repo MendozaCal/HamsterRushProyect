@@ -31,6 +31,11 @@ public class HealthcareSystem : MonoBehaviour
             playerController.enabled = false;
             spawnSystem.DeadPlayer();
         }
+        if (Health == 100)
+        {
+            playerController.maxSpeed = playerController.Speed;
+            playerController.incialSpeed = playerController.Speed;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -68,11 +73,7 @@ public class HealthcareSystem : MonoBehaviour
             {
                 playerController.maxSpeed -= 2*Time.deltaTime;
                 playerController.incialSpeed -=2*Time.deltaTime;
-                if (Health == 100)
-                {
-                    playerController.maxSpeed = playerController.Speed;
-                    playerController.incialSpeed = playerController.Speed;
-                }
+                
             }
         }
         if (collision.gameObject.CompareTag("Borde"))

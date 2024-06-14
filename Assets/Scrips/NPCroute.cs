@@ -8,8 +8,9 @@ public class NPCroute : MonoBehaviour
     public TextMeshPro text;
     [Header("-----Move-----")]
     public Transform[] waypoints; 
-    public float speed = 15;
-    float InicialSpeed;
+    public float maxSpeed = 15;
+    public float InicialSpeed;
+    public float Speed;
     private int currentWaypoint = 0;
     Rigidbody rb;
     public float gravity;
@@ -32,13 +33,14 @@ public class NPCroute : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        InicialSpeed = speed;
+        InicialSpeed = maxSpeed;
+        Speed = maxSpeed;
         RandomDuration = Random.Range(10, 20);
         RandomDelay= Random.Range(3, 10);
     }
     void FixedUpdate()
     {
-        speed = Mathf.Min(speed, InicialSpeed);
+        maxSpeed = Mathf.Min(maxSpeed, InicialSpeed);
         maxNitro = Mathf.Clamp(maxNitro, 0, 100);
         if (text.text == $"Start")
         {
@@ -63,7 +65,7 @@ public class NPCroute : MonoBehaviour
     {
         Vector3 direction = waypoints[currentWaypoint].position - transform.position;
         direction.Normalize();
-        Vector3 velocity = direction * speed;
+        Vector3 velocity = direction * maxSpeed;
         velocity.y = rb.velocity.y + (Physics.gravity.y * gravity * Time.deltaTime);
         rb.velocity = velocity;
         transform.LookAt(waypoints[currentWaypoint]);
@@ -87,7 +89,7 @@ public class NPCroute : MonoBehaviour
             {
                 timerDelay = 0;
                 timerDuration = 0;
-                speed = InicialSpeed;
+                maxSpeed = InicialSpeed;
             }
         }
         else if (impulsoVerificationNPC == true)
@@ -96,17 +98,17 @@ public class NPCroute : MonoBehaviour
         }
         else
         {
-            speed = InicialSpeed;
+            maxSpeed = InicialSpeed;
         }
     }
     public void BustRampa()
     {
-        speed = InicialSpeed;
-        speed += impulso;
+        maxSpeed = InicialSpeed;
+        maxSpeed += impulso;
         TimerImpulso += Time.deltaTime;
         if (TimerImpulso >= MaxTimeImpulso)
         {
-            speed = InicialSpeed;
+            maxSpeed = InicialSpeed;
             impulsoVerificationNPC = false;
             TimerImpulso = 0;
         }
@@ -124,7 +126,7 @@ public class NPCroute : MonoBehaviour
     }
     void UseNitro()
     {
-        speed += nitroPower;
+        maxSpeed += nitroPower;
         maxNitro -= Time.deltaTime * 10;
     }
 }

@@ -19,11 +19,15 @@ public class HealthcareSystemNPC : MonoBehaviour
     }
     private void Update()
     {
-        Health = Mathf.Min(Health, 100); // Limitar a Health a un máximo de 100
-        Health = Mathf.Max(Health, 0);
+        Health = Mathf.Clamp(Health, 0, 100);
         if (Health <= 0)
         {
             spawnSystemNPC.DeadNPC();
+        }
+        if (Health == 100)
+        {
+            NPCroute.maxSpeed = NPCroute.Speed;
+            NPCroute.InicialSpeed = NPCroute.Speed;
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -44,14 +48,17 @@ public class HealthcareSystemNPC : MonoBehaviour
         {
             Health -= DamageFloor;
             sueloVerify = false;
+            NPCroute.maxSpeed += 2f;
+            NPCroute.InicialSpeed += 2f;
         }
-
     }
     private void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.CompareTag("Pits"))
         {
             Health += HealthRecuperation * Time.deltaTime;
+            NPCroute.maxSpeed -= 2 * Time.deltaTime;
+            NPCroute.InicialSpeed -= 2 * Time.deltaTime;
         }
     }
 }

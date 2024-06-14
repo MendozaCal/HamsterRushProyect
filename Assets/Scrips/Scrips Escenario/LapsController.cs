@@ -9,7 +9,7 @@ public class LapsController : MonoBehaviour
 {
     [Header("-----Cont Vueltas-----")]
     public TextMeshPro Contador;
-    float cont;
+    float cont = 1;
     int laps = 1;
     public int MaxLaps = 3;
     public bool comprover1 = false;
