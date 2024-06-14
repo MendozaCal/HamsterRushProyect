@@ -10,7 +10,7 @@ public class LapsController : MonoBehaviour
     [Header("-----Cont Vueltas-----")]
     public TextMeshPro Contador;
     float cont = 1;
-    int laps = 1;
+    public int laps = 0;
     public int MaxLaps = 3;
     public bool comprover1 = false;
     public bool comprover2 = false;
@@ -27,6 +27,12 @@ public class LapsController : MonoBehaviour
     private void Update()
     {
         StartController();
+        if (comprover1 == true && comprover2 == true && laps < MaxLaps)
+        {
+            Contador.text = $"Lap {laps}/{MaxLaps}";
+            comprover1 = false;
+            comprover2 = false;
+        }
     }
     void StartController()
     {
@@ -39,6 +45,15 @@ public class LapsController : MonoBehaviour
             playerController.enabled = true;
             NPCroute.enabled = true;
         }
+        
+        if (laps == MaxLaps)
+        {
+            Contador.text = "Last Lap";
+        }
+        if (laps > MaxLaps)
+        {
+            MetaFinal.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,23 +61,13 @@ public class LapsController : MonoBehaviour
         if (other.gameObject.CompareTag("Meta"))
         {
             comprover1 = true;
-            Contador.text = $"Lap {laps}/{MaxLaps}";
         }
         if (other.gameObject.CompareTag("Meta2"))
         {
             comprover2 = true;
             laps++;
         }
-        if (comprover1 == true && comprover2 == true && laps < MaxLaps)
-        {
-            comprover1 = false;
-            comprover2 = false;
-        }
-        if (laps > MaxLaps)
-        {
-            Contador.text = "Last Lap";
-            MetaFinal.SetActive(true);
-        }
+        
         if (Contador.text == "Last Lap" && other.gameObject.CompareTag("FinalMeta"))
         {
             SceneManager.LoadScene("FinishScene");

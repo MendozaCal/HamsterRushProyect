@@ -56,6 +56,19 @@ public class LapsControllerTutorial : MonoBehaviour
             Contador.text = $"Start";
             playerController.enabled = true;
         }
+        if (comprover1 == true && comprover2 == true && laps < MaxLaps)
+        {
+            comprover1 = false;
+            comprover2 = false;
+        }
+        if (laps == MaxLaps)
+        {
+            Contador.text = "Last Lap";
+        }
+        if (laps > MaxLaps)
+        {
+            MetaFinal.SetActive(true);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -69,16 +82,7 @@ public class LapsControllerTutorial : MonoBehaviour
             comprover2 = true;
             laps++;
         }
-        if (comprover1 == true && comprover2 == true && laps < MaxLaps)
-        {
-            comprover1 = false;
-            comprover2 = false;
-        }
-        if (laps > MaxLaps)
-        {
-            Contador.text = "Last Lap";
-            MetaFinal.SetActive(true);
-        }
+        
         if (Contador.text == "Last Lap" && other.gameObject.CompareTag("FinalMeta"))
         {
             SceneManager.LoadScene("FinishScene");
