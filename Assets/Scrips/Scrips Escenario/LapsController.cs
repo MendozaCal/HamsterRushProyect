@@ -27,12 +27,7 @@ public class LapsController : MonoBehaviour
     private void Update()
     {
         StartController();
-        if (comprover1 == true && comprover2 == true && laps < MaxLaps)
-        {
-            Contador.text = $"Lap {laps}/{MaxLaps}";
-            comprover1 = false;
-            comprover2 = false;
-        }
+        
     }
     void StartController()
     {
@@ -44,9 +39,18 @@ public class LapsController : MonoBehaviour
             Contador.text = $"Start";
             playerController.enabled = true;
             NPCroute.enabled = true;
+            if (cont >= 5)
+            {
+                Contador.text = $"Lap {laps}/{MaxLaps}";
+            }
         }
-        
-        if (laps == MaxLaps)
+        if (comprover1 == true && comprover2 == true)
+        {
+            laps++;
+            comprover1 = false;
+            comprover2 = false;
+        }
+        if (laps >= MaxLaps)
         {
             Contador.text = "Last Lap";
         }
@@ -65,10 +69,8 @@ public class LapsController : MonoBehaviour
         if (other.gameObject.CompareTag("Meta2"))
         {
             comprover2 = true;
-            laps++;
         }
-        
-        if (Contador.text == "Last Lap" && other.gameObject.CompareTag("FinalMeta"))
+        if (other.gameObject.CompareTag("FinalMeta"))
         {
             SceneManager.LoadScene("FinishScene");
         }

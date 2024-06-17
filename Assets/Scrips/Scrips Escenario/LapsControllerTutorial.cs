@@ -18,10 +18,10 @@ public class LapsControllerTutorial : MonoBehaviour
     public GameObject TutorialMessageNitro;
     public GameObject TutorialMessagePits;
     public GameObject TutorialMessageRace;
-    bool isActiveRamps = false;
-    bool isActiveNitro = false;
-    bool isActivePits = false;
-    bool isActiveRace = false;
+    public bool isActiveRamps = false;
+    public bool isActiveNitro = false;
+    public bool isActivePits = false;
+    public bool isActiveRace = false;
     [Header("-----Cont Vueltas-----")]
     public TextMeshPro Contador;
     float cont = 1;
@@ -36,7 +36,7 @@ public class LapsControllerTutorial : MonoBehaviour
     private void Start()
     {
         playerController = GetComponent<PlayerController>();
-        playerController.enabled = false;
+        playerController.isMove = false;
         StartCoroutine(TutorialController1());
     }
     private void Update()
@@ -54,14 +54,19 @@ public class LapsControllerTutorial : MonoBehaviour
         if (cont >= 3)
         {
             Contador.text = $"Start";
-            playerController.enabled = true;
+            playerController.isMove = true;
+            if (cont >= 5)
+            {
+                Contador.text = $"Lap {laps}/{MaxLaps}";
+            }
         }
-        if (comprover1 == true && comprover2 == true && laps < MaxLaps)
+        if (comprover1 == true && comprover2 == true)
         {
+            laps++;
             comprover1 = false;
             comprover2 = false;
         }
-        if (laps == MaxLaps)
+        if (laps >= MaxLaps)
         {
             Contador.text = "Last Lap";
         }
@@ -70,6 +75,7 @@ public class LapsControllerTutorial : MonoBehaviour
             MetaFinal.SetActive(true);
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Meta"))
@@ -89,24 +95,28 @@ public class LapsControllerTutorial : MonoBehaviour
         }
         if (other.gameObject.CompareTag("RampsTutorial") && isActiveRamps == false)
         {
+            playerController.isMove = false;
+
             StartCoroutine(TutorialControllerRamps());
         }
         if (other.gameObject.CompareTag("NitroTutorial") && isActiveNitro == false)
         {
+            playerController.isMove = false;
             StartCoroutine(TutorialControllerNitro());
         }
         if (other.gameObject.CompareTag("PitsTutorial") && isActivePits == false)
         {
+            playerController.isMove = false;
             StartCoroutine(TutorialControllerPits());
         }
         if (other.gameObject.CompareTag("RaceTutorial") && isActiveRace == false)
         {
+            playerController.isMove = false;
             StartCoroutine(TutorialControllerRace());
         }
     }
     IEnumerator TutorialController1()
     {
-        yield return new WaitForSeconds(1);
         Tutorial.SetActive(true);
         TutorialMessage.SetActive(true);
         yield return new WaitForSeconds(5);
@@ -116,18 +126,20 @@ public class LapsControllerTutorial : MonoBehaviour
         yield return new WaitForSeconds(5);
         TutorialMessage2.SetActive(false);
         Tutorial.SetActive(false);
+        Debug.Log("funciona1");
         isActive = true;
     }
     IEnumerator TutorialControllerRamps()
     {
         HealthSlider.SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.2f);
         Tutorial.SetActive(true);
         TutorialMessageRamps.SetActive(true);
         yield return new WaitForSeconds(4);
         TutorialMessageRamps.SetActive(false);
         Tutorial.SetActive(false);
-        playerController.maxSpeed = playerController.incialSpeed;
+        Debug.Log("funciona2");
+        playerController.isMove = true;
         isActiveRamps = true;
     }
     IEnumerator TutorialControllerNitro()
@@ -138,9 +150,10 @@ public class LapsControllerTutorial : MonoBehaviour
         TutorialMessageNitro.SetActive(true);
         yield return new WaitForSeconds(5);
         TutorialMessageNitro.SetActive(false);
-        Tutorial.SetActive(false);
         playerController.isNitro = true;
-        playerController.maxSpeed = playerController.incialSpeed;
+        Tutorial.SetActive(false);
+        Debug.Log("funciona3");
+        playerController.isMove = true;
         isActiveNitro = true;
     }
     IEnumerator TutorialControllerPits()
@@ -151,7 +164,9 @@ public class LapsControllerTutorial : MonoBehaviour
         yield return new WaitForSeconds(5);
         TutorialMessagePits.SetActive(false);
         Tutorial.SetActive(false);
-        playerController.maxSpeed = playerController.incialSpeed;
+        playerController.isMove = true;
+        Debug.Log("funciona4");
+
         isActivePits = true;
     }
     IEnumerator TutorialControllerRace()
@@ -162,7 +177,8 @@ public class LapsControllerTutorial : MonoBehaviour
         yield return new WaitForSeconds(5);
         TutorialMessageRace.SetActive(false);
         Tutorial.SetActive(false);
-        playerController.maxSpeed = playerController.incialSpeed;
+        Debug.Log("funciona5");
+        playerController.isMove = true;
         isActiveRace = true;
     }
 }
