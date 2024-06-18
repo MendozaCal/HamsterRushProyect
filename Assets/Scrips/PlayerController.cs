@@ -54,6 +54,10 @@ public class PlayerController : MonoBehaviour
         {
             MoveHamster();
         }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
     public void MoveHamster()
     {

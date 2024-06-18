@@ -3073,7 +3073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: abc47f24387e2574b94774a6575c0cef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -115.02
+      value: -116.88
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: abc47f24387e2574b94774a6575c0cef, type: 3}
       propertyPath: m_LocalPosition.z
@@ -44850,7 +44850,7 @@ GameObject:
   - component: {fileID: 1100903198}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Pits
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44864,7 +44864,7 @@ Transform:
   m_GameObject: {fileID: 1100903196}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44889,8 +44889,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 51.86417, y: 1, z: 19.01536}
-  m_Center: {x: 0.5604076, y: -0.0000049490804, z: 9.007645}
+  m_Size: {x: 50.402714, y: 1, z: 19.01536}
+  m_Center: {x: 0.33951053, y: -0.00000494713, z: 9.007635}
 --- !u!1001 &1102268939
 PrefabInstance:
   m_ObjectHideFlags: 0

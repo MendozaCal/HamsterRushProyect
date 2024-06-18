@@ -12427,6 +12427,10 @@ MonoBehaviour:
   TutorialMessageNitro: {fileID: 542044318}
   TutorialMessagePits: {fileID: 1782890680}
   TutorialMessageRace: {fileID: 842773948}
+  isActiveRamps: 0
+  isActiveNitro: 0
+  isActivePits: 0
+  isActiveRace: 0
   Contador: {fileID: 734546771}
   MaxLaps: 2
   comprover1: 0
@@ -13176,9 +13180,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 224441803}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.004392309, y: -0.68358076, z: 0.018091563, w: -0.7296374}
-  m_LocalPosition: {x: -32.7, y: 0.2, z: 22.1}
-  m_LocalScale: {x: 2.9944062, y: 4.0178666, z: 2.5278416}
+  m_LocalRotation: {x: 0.006015589, y: -0.6835685, z: 0.00698088, w: -0.72982824}
+  m_LocalPosition: {x: -32.68805, y: -0.9675524, z: 22.101353}
+  m_LocalScale: {x: 2.9943032, y: 4.0197406, z: 2.5270848}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1256029495}
@@ -31014,6 +31018,7 @@ GameObject:
   - component: {fileID: 751963324}
   - component: {fileID: 751963323}
   - component: {fileID: 751963322}
+  - component: {fileID: 751963325}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Borde
@@ -31095,6 +31100,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &751963325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751963320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 910771039, guid: 45827f4a4694b2c4b960e235057c13ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfacevecs: []
+  tdataFloat: []
+  terrainData: {fileID: 15600000, guid: dd17c0bdd65e08d448048484846b7637, type: 2}
+  xStart: 0
+  zStart: 0
+  roadSurface: {fileID: 0}
+  surfaceMesh: {fileID: 0}
+  surfaceCollider: {fileID: 0}
+  terrainDataStored: []
+  terrainChanges: []
+  terrainTrees: []
+  detailInstances: []
+  detailInstanceStarts: 
+  surfaceObjects: []
+  terrainTestPoints: []
+  splatData: []
+  addedTrees: []
+  holes: []
+  terrainHeightsBackup: []
+  terrainTreesBackup: []
+  terrainDetailBackup: []
+  terrainSplatBackup: []
+  detailInstanceStartsBackUp: 
+  heightmapFlag: 0
+  splatmapFlag: 0
+  treeFlag: 0
+  detailFlag: 0
+  holesFlag: 0
+  terrainDone: 0
+  backupFlagNotification: 0
+  ignore: 0
+  backupObject: {fileID: 0}
+  terrain: {fileID: 0}
 --- !u!1001 &757999968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40889,9 +40939,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121654058}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0000000020954756, y: -0.3195153, z: 9.3132246e-10, w: 0.9475812}
-  m_LocalPosition: {x: -75.84, y: 1.7, z: 15.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.0048645576, y: -0.31947815, z: 0.01442674, w: 0.9474713}
+  m_LocalPosition: {x: -75.839615, y: -1.3676358, z: 15.70137}
+  m_LocalScale: {x: 1.0002042, y: 0.99958676, z: 1.0001305}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1256029495}
@@ -42749,43 +42799,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a429712bd311ae5479fe50d6494d9059, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 51.358925
+      value: 51.36
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a429712bd311ae5479fe50d6494d9059, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.4819746
+      value: 6.21
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a429712bd311ae5479fe50d6494d9059, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -78.834366
+      value: -78.84
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a429712bd311ae5479fe50d6494d9059, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.64832234
+      value: 0.6482944
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a429712bd311ae5479fe50d6494d9059, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.007053279
+      value: 0.004538597
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a429712bd311ae5479fe50d6494d9059, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.761327
+      value: -0.76134616
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a429712bd311ae5479fe50d6494d9059, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0031006606
+      value: -0.0067702774
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a429712bd311ae5479fe50d6494d9059, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.21
+      value: -0.253
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a429712bd311ae5479fe50d6494d9059, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90.586
+      value: -99.169
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a429712bd311ae5479fe50d6494d9059, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 1.745
+      value: -0.899
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a429712bd311ae5479fe50d6494d9059, type: 3}
       propertyPath: m_Name

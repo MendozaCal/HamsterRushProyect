@@ -22,6 +22,7 @@ public class LapsControllerTutorial : MonoBehaviour
     public bool isActiveNitro = false;
     public bool isActivePits = false;
     public bool isActiveRace = false;
+    bool gamestart = false;
     [Header("-----Cont Vueltas-----")]
     public TextMeshPro Contador;
     float cont = 1;
@@ -54,7 +55,11 @@ public class LapsControllerTutorial : MonoBehaviour
         if (cont >= 3)
         {
             Contador.text = $"Start";
-            playerController.isMove = true;
+            if (!gamestart)
+            {
+                gamestart = true;
+                playerController.isMove = true;
+            }
             if (cont >= 5)
             {
                 Contador.text = $"Lap {laps}/{MaxLaps}";
