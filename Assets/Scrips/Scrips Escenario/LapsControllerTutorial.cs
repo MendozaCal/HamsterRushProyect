@@ -26,7 +26,7 @@ public class LapsControllerTutorial : MonoBehaviour
     [Header("-----Cont Vueltas-----")]
     public TextMeshPro Contador;
     float cont = 1;
-    int laps = 1;
+    public int laps = 1;
     public int MaxLaps = 3;
     public bool comprover1 = false;
     public bool comprover2 = false;
@@ -91,10 +91,9 @@ public class LapsControllerTutorial : MonoBehaviour
         if (other.gameObject.CompareTag("Meta2"))
         {
             comprover2 = true;
-            laps++;
         }
         
-        if (Contador.text == "Last Lap" && other.gameObject.CompareTag("FinalMeta"))
+        if (laps > MaxLaps && other.gameObject.CompareTag("FinalMeta"))
         {
             SceneManager.LoadScene("FinishScene");
         }
