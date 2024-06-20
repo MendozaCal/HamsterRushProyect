@@ -27,7 +27,6 @@ public class LapsController : MonoBehaviour
     private void Update()
     {
         StartController();
-        
     }
     void StartController()
     {

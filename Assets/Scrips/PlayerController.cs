@@ -61,10 +61,36 @@ public class PlayerController : MonoBehaviour
     }
     public void MoveHamster()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(0, 0, verticalInput * maxSpeed) ;
+        float horizontalInput = 0f;
+        float verticalInput = 0f;
+        bool isMoving = false;
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            verticalInput = 1f;
+            isMoving = true;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            verticalInput = -1f;
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            horizontalInput = -1f;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            horizontalInput = 1f;
+        }
+        if (isMoving)
+        {
+            currentSpeed += accelerationTime * Time.deltaTime;
+            currentSpeed = Mathf.Clamp(currentSpeed, 0f, maxSpeed);
+        }
+
+        Vector3 movement = new Vector3(0, 0, verticalInput * currentSpeed);
         movement.y = rb.velocity.y + (Physics.gravity.y * gravity * Time.deltaTime); ;
 
         rb.velocity = transform.TransformDirection(movement);

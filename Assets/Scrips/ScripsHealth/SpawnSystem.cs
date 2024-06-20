@@ -45,13 +45,14 @@ public class SpawnSystem : MonoBehaviour
     IEnumerator respawn()
     {
         isRespawning = true;
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         posPlayer.position = psNewRespawn;
         posPlayer.transform.rotation = spawn.transform.rotation;
         
         playerController.enabled = true;
         playerController.maxSpeed = playerController.Speed;
         playerController.incialSpeed = playerController.Speed;
+        playerController.currentSpeed = 0;
         healthcareSystem.Health += 100;
         isRespawning = false;
     }
