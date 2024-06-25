@@ -18,21 +18,17 @@ public class PlayerController : MonoBehaviour
     public float gravity = 3;
     Rigidbody rb;
     public bool isMove = true;
-
     [Header("-----Nitro-----")]
     public float maxNitro = 100;
     public float nitroPower = 15;
     public float nitroItem = 25;
     public Slider NitroSlider;
-    
     [Header("-----Impulso Rampa-----")]
     public float MaxTimeImpulso = 2;
     public float impulso = 15;
     float TimerImpulso = 0;
     public bool impulsoVerification = false;
     public bool isNitro = false;
-
-    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -40,7 +36,6 @@ public class PlayerController : MonoBehaviour
         Speed = maxSpeed;
         NitroSlider.maxValue = maxNitro;
     }
-
     void FixedUpdate()
     {
         maxSpeed = Mathf.Min(maxSpeed, incialSpeed);
@@ -61,7 +56,6 @@ public class PlayerController : MonoBehaviour
     }
     public void MoveHamster()
     {
-
         float horizontalInput = 0f;
         float verticalInput = 0f;
         bool isMoving = false;
@@ -87,6 +81,11 @@ public class PlayerController : MonoBehaviour
         if (isMoving)
         {
             currentSpeed += accelerationTime * Time.deltaTime;
+            currentSpeed = Mathf.Clamp(currentSpeed, 0f, maxSpeed);
+        }
+        else
+        {
+            currentSpeed -= accelerationTime * Time.deltaTime;
             currentSpeed = Mathf.Clamp(currentSpeed, 0f, maxSpeed);
         }
 

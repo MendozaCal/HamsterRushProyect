@@ -34,6 +34,7 @@ public class LapsControllerTutorial : MonoBehaviour
     PlayerController playerController;
     bool isActive = false;
 
+
     private void Start()
     {
         playerController = GetComponent<PlayerController>();

@@ -39,7 +39,6 @@ public class HealthcareSystem : MonoBehaviour
         {
             playerController.impulsoVerification = true;
             sueloVerifi = true;
-            
         }
         if (other.gameObject.CompareTag("Abismo"))
         {

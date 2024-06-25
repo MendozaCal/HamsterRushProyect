@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class BottonManager : MonoBehaviour
 {
     AudioSource audioSource;
+    public Image image;
+    public Sprite sprite1;
+    public Sprite sprite2;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -23,6 +27,14 @@ public class BottonManager : MonoBehaviour
         if (audioSource != null )
         {
             audioSource.mute = !audioSource.mute;
+            if (audioSource.mute)
+            {
+                image.sprite = sprite2;
+            }
+            else
+            {
+                image.sprite = sprite1;
+            }
         }
     }
     public void Quit()

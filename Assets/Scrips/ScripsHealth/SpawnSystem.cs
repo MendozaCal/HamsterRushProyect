@@ -40,6 +40,7 @@ public class SpawnSystem : MonoBehaviour
         if (collider.gameObject.CompareTag("New Respawn"))
         {
             psNewRespawn = collider.transform.position;
+            spawn = collider.gameObject;
         }
     }
     IEnumerator respawn()
@@ -47,7 +48,7 @@ public class SpawnSystem : MonoBehaviour
         isRespawning = true;
         yield return new WaitForSeconds(3);
         posPlayer.position = psNewRespawn;
-        posPlayer.transform.rotation = spawn.transform.rotation;
+        posPlayer.transform.forward = spawn.transform.right;
         
         playerController.enabled = true;
         playerController.maxSpeed = playerController.Speed;

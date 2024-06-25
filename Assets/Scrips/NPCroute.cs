@@ -42,10 +42,8 @@ public class NPCroute : MonoBehaviour
     {
         maxSpeed = Mathf.Min(maxSpeed, InicialSpeed);
         maxNitro = Mathf.Clamp(maxNitro, 0, 100);
-        if (text.text == $"Start")
-        {
-            MoveToWaypoint();
-        }
+        
+        MoveToWaypoint();
         NitroNPC();
         calculateDistance();
     }

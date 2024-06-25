@@ -16,13 +16,16 @@ public class LapsController : MonoBehaviour
     public bool comprover2 = false;
     public GameObject MetaFinal;
     PlayerController playerController;
-    NPCroute NPCroute;
+    NPCroute[] NPCroute;
     private void Start()
     {
         playerController = GetComponent<PlayerController>();
         playerController.enabled = false;
-        NPCroute = FindObjectOfType<NPCroute>();
-        NPCroute.enabled = false;
+        NPCroute = FindObjectsOfType<NPCroute>();
+        foreach (NPCroute npcRoute in NPCroute)
+        {
+            npcRoute.enabled = false;
+        }
     }
     private void Update()
     {
@@ -37,7 +40,10 @@ public class LapsController : MonoBehaviour
         {
             Contador.text = $"Start";
             playerController.enabled = true;
-            NPCroute.enabled = true;
+            foreach (NPCroute npcRoute in NPCroute)
+            {
+                npcRoute.enabled = true;
+            }
             if (cont >= 5)
             {
                 Contador.text = $"Lap {laps}/{MaxLaps}";
