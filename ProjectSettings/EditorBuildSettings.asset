@@ -15,12 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/FinishScene.unity
     guid: dbab3d5138ebf8445b4bf35033b1ecd7
   - enabled: 1
-    path: Assets/Scenes/Select Mode.unity
+    path: Assets/Scenes/Credits.unity
     guid: 2799db9d5d27aab489efcd2cb591e0db
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: e111828ba772757429658c7bbb4cfc1a
-  - enabled: 1
-    path: Assets/Scenes/Creditos.unity
-    guid: 269a32fe203e9714984b08b80abfd6c8
   m_configObjects: {}

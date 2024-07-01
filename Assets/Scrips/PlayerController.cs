@@ -89,10 +89,10 @@ public class PlayerController : MonoBehaviour
             currentSpeed = Mathf.Clamp(currentSpeed, 0f, maxSpeed);
         }
 
-        Vector3 movement = new Vector3(0, 0, verticalInput * currentSpeed);
+        Vector3 movement = transform.forward * verticalInput * currentSpeed;
         movement.y = rb.velocity.y + (Physics.gravity.y * gravity * Time.deltaTime); ;
 
-        rb.velocity = transform.TransformDirection(movement);
+        rb.velocity = movement;
 
         Quaternion rotation = Quaternion.Euler(0, horizontalInput * rotationSpeed * Time.deltaTime, 0);
         rb.MoveRotation(rb.rotation * rotation);
