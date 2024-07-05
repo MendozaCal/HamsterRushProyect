@@ -40,6 +40,7 @@ public class HealthcareSystemNPC : MonoBehaviour
         if (other.gameObject.CompareTag("Abismo"))
         {
             Health = 0;
+            Debug.Log("abismo");
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -51,6 +52,7 @@ public class HealthcareSystemNPC : MonoBehaviour
             NPCroute.maxSpeed += 2f;
             NPCroute.InicialSpeed += 2f;
         }
+        
     }
     private void OnTriggerStay(Collider collider)
     {
@@ -59,6 +61,13 @@ public class HealthcareSystemNPC : MonoBehaviour
             Health += HealthRecuperation * Time.deltaTime;
             NPCroute.maxSpeed -= 2 * Time.deltaTime;
             NPCroute.InicialSpeed -= 2 * Time.deltaTime;
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Borde"))
+        {
+            Health -= 50 * Time.deltaTime;
         }
     }
 }

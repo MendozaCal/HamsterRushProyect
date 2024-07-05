@@ -14,6 +14,14 @@ public class HealthcareSystem : MonoBehaviour
     PlayerController playerController;
     public bool sueloVerifi = false;
     public bool isDamage = false;
+    public GameObject particles;
+    [Header("-----Estados Esfera-----")]
+    public GameObject Esfera1;
+    public GameObject Esfera2;
+    public GameObject Esfera3;
+    public GameObject Esfera4;
+    public GameObject Esfera5;
+    public GameObject Esfera6;
 
     private void Start()
     {
@@ -31,7 +39,60 @@ public class HealthcareSystem : MonoBehaviour
             playerController.enabled = false;
             spawnSystem.DeadPlayer();
         }
-        
+        if (Health >= 100)
+        {
+            Esfera1.SetActive(true);
+            Esfera2.SetActive(false);
+            Esfera3.SetActive(false);
+            Esfera4.SetActive(false);
+            Esfera5.SetActive(false);
+            Esfera6.SetActive(false);
+        }
+        if (Health < 100 && Health >= 80)
+        {
+            Esfera1.SetActive(false);
+            Esfera2.SetActive(true);
+            Esfera3.SetActive(false);
+            Esfera4.SetActive(false);
+            Esfera5.SetActive(false);
+            Esfera6.SetActive(false);
+        }
+        if (Health < 80 && Health >= 60)
+        {
+            Esfera1.SetActive(false);
+            Esfera2.SetActive(false);
+            Esfera3.SetActive(true);
+            Esfera4.SetActive(false);
+            Esfera5.SetActive(false);
+            Esfera6.SetActive(false);
+        }
+        if (Health < 60 && Health >= 40)
+        {
+            Esfera1.SetActive(false);
+            Esfera2.SetActive(false);
+            Esfera3.SetActive(false);
+            Esfera4.SetActive(true);
+            Esfera5.SetActive(false);
+            Esfera6.SetActive(false);
+        }
+        if (Health < 40 && Health >= 20)
+        {
+            Esfera1.SetActive(false);
+            Esfera2.SetActive(false);
+            Esfera3.SetActive(false);
+            Esfera4.SetActive(false);
+            Esfera5.SetActive(true);
+            Esfera6.SetActive(false);
+        }
+        if (Health < 20 && Health >= 0)
+        {
+            Esfera1.SetActive(false);
+            Esfera2.SetActive(false);
+            Esfera3.SetActive(false);
+            Esfera4.SetActive(false);
+            Esfera5.SetActive(false);
+            Esfera6.SetActive(true);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -47,6 +108,17 @@ public class HealthcareSystem : MonoBehaviour
             playerController.maxSpeed = playerController.Speed;
             playerController.incialSpeed= playerController.Speed;
             sueloVerifi = false;
+        }
+        if (other.gameObject.CompareTag("Pits") && Health < 100)
+        {
+            particles.SetActive(true);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pits"))
+        {
+            particles.SetActive(false);
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -69,7 +141,7 @@ public class HealthcareSystem : MonoBehaviour
             {
                 playerController.maxSpeed -= 2*Time.deltaTime;
                 playerController.incialSpeed -=2*Time.deltaTime;
-                if (Health == 100)
+                if (Health <= 100)
                 {
                     playerController.maxSpeed = playerController.Speed;
                     playerController.incialSpeed = playerController.Speed;
@@ -77,6 +149,7 @@ public class HealthcareSystem : MonoBehaviour
             }
         }
     }
+  
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Borde"))

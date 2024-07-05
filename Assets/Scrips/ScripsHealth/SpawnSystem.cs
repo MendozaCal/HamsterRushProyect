@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,19 +15,14 @@ public class SpawnSystem : MonoBehaviour
     public Slider HealthSlider;
     bool isRespawning;
     GameObject spawn;
+
     private void Start()
     {
         healthcareSystem = GetComponent<HealthcareSystem>();
         playerController = GetComponent<PlayerController>();
         spawn = GameObject.FindWithTag("New Respawn");
     }
-    private void Update()
-    {
-        if (posPlayer.transform.rotation == spawn.transform.rotation)
-        {
-            Debug.Log("funciona");
-        }
-    }
+
     public void DeadPlayer()
     {
         if (isRespawning)

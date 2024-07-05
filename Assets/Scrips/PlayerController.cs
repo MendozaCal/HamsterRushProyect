@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     public TextMeshPro Text;
     [Header("-----Move-----")]
-    public float maxSpeed = 20;
+    public float maxSpeed = 25;
     public float accelerationTime = 10;
     public float rotationSpeed = 90;
     public float incialSpeed;
@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float gravity = 3;
     Rigidbody rb;
     public bool isMove = true;
+    public float velRotacion = 10;
     [Header("-----Nitro-----")]
     public float maxNitro = 100;
     public float nitroPower = 15;
@@ -130,6 +131,19 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Nitro"))
         {
             maxNitro += nitroItem;
-        }   
+        }
+        if (other.gameObject.CompareTag("Impulsor"))
+        {
+            impulsoVerification = true;
+            maxSpeed = incialSpeed;
+            maxSpeed += impulso;
+            TimerImpulso += Time.deltaTime;
+            if (TimerImpulso >= MaxTimeImpulso)
+            {
+                maxSpeed = incialSpeed;
+                impulsoVerification = false;
+                TimerImpulso = 0;
+            }
+        }
     }
 }

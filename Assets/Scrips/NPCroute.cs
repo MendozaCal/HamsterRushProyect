@@ -8,7 +8,7 @@ public class NPCroute : MonoBehaviour
     public TextMeshPro text;
     [Header("-----Move-----")]
     public Transform[] waypoints; 
-    public float maxSpeed = 15;
+    public float maxSpeed = 25;
     public float InicialSpeed;
     public float Speed;
     private int currentWaypoint = 0;
@@ -46,6 +46,7 @@ public class NPCroute : MonoBehaviour
         MoveToWaypoint();
         NitroNPC();
         calculateDistance();
+
     }
     void calculateDistance()
     {
@@ -59,6 +60,7 @@ public class NPCroute : MonoBehaviour
             }
         }
     }
+    
     void MoveToWaypoint()
     {
         Vector3 direction = waypoints[currentWaypoint].position - transform.position;

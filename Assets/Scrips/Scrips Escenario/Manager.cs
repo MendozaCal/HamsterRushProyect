@@ -9,6 +9,7 @@ public class Manager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject EventeSystem;
     public GameObject Sliders;
+    public GameObject Cronometro;
     private bool isPaused = false;
     private void Start()
     {
@@ -51,6 +52,7 @@ public class Manager : MonoBehaviour
         AudioListener.pause = true;
         EventeSystem.SetActive(true);
         Sliders.SetActive(false);
+        Cronometro.SetActive(false);
         pauseMenu.SetActive(true);
     }
     public void ResumeGame()
@@ -59,6 +61,7 @@ public class Manager : MonoBehaviour
         AudioListener.pause = false;
         EventeSystem.SetActive(false);
         Sliders.SetActive(true);
+        Cronometro.SetActive(true);
         pauseMenu.SetActive(false);
     }
 }

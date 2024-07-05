@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class ButtonReaction : MonoBehaviour
 {
@@ -18,7 +19,10 @@ public class ButtonReaction : MonoBehaviour
     {
         StartCoroutine(DesactiveTime());
     }
-
+    public void JumpScene(string escena)
+    {
+        SceneManager.LoadScene(escena);
+    }
     IEnumerator DesactiveTime()
     {
         yield return new WaitForSeconds(5);
